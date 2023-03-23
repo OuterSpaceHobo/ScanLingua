@@ -1,0 +1,61 @@
+{
+  "name": "scan-lingua",
+  "private": true,
+  "description": "scan-lingua service_worker",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "type": "module",
+  "background": {
+    "service_worker": "index.js"
+  },
+  "permissions": [
+    "desktopCapture",
+    "downloads",
+    "tabs"
+  ],
+  "action": {
+    "default_title": "Take a Screenshot"
+  },
+  "icons": {
+    "16": "/assets/icon-16.png",
+    "32": "/assets/icon-32.png",
+    "48": "/assets/icon-48.png",
+    "100": "/assets/icon-100.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content_script.js"
+      ]
+    }
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@google-cloud/translate": "^7.2.0",
+    "@google-cloud/vision": "^3.1.0",
+    "@types/chrome": "^0.0.224",
+    "html-to-image": "^1.11.11",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-frame-component": "^5.2.6",
+    "react-router-dom": "^6.9.0",
+    "styled-components": "^5.3.8",
+    "vite-plugin-css-injected-by-js": "^3.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/styled-components": "^5.1.26",
+    "@vitejs/plugin-react": "^3.1.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0"
+  }
+}
