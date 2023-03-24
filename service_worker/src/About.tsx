@@ -9,7 +9,7 @@ export function About() {
       <span style={{color: `darkviolet`}}>ScanLingua</span> provides recognition, translation and kanji annotation of selected screen areas.
       </InputP>
       <InputP style={{textAlign: `center`}}>
-      It is great for checking on subtitles, manga text bubbles or any japanese text.
+      It is great for checking on subtitles, manga panels or any japanese text.
       </InputP>
       <InputP style={{textAlign: `center`}}>
       This project is heavily inspired with Yomichan and use awesome japanese dictionary Jotoba for kanji annotation.
