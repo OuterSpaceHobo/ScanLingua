@@ -2,7 +2,7 @@
 
 ScanLingua provides recognition, translation and kanji annotation of selected screen areas.
 
-It is great for checking on subtitles, manga text bubbles or any japanese text.
+It is great for checking on subtitles, manga panels or any japanese text.
 
 This project is heavily inspired with Yomichan and use awesome japanese dictionary Jotoba for kanji annotation.
 
