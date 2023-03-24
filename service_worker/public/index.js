@@ -73,7 +73,7 @@ async function gotMessage(request, sendResponse) {
 }
 
 let vision, visionText 
-let userApi = `AIzaSyBlBtE5dJUqAIozSU2t5RHxijQZ_3PJu-A`
+let userApi = `DEFAULT_API_KEY` // provide defauil api key
 
 async function captureZone(x1, y1, x2, y2, pixelRatio, tabHeight, tabWidth) {
     
