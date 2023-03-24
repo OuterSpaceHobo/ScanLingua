@@ -14,7 +14,7 @@ export async function updateAPI (userApi: string) {
 
 export async function setDefaultAPI () {
     const requestId = getRandomInt(100000) 
-    const userApi = `AIzaSyBlBtE5dJUqAIozSU2t5RHxijQZ_3PJu-A` // default API, 1000 req per month.
+    const userApi = `DEFAULT_API_KEY` // provide defauil api key
     const response = await chrome.runtime.sendMessage({type: "default_API", requestId, userApi}); 
     const res = await new Promise((resolve, reject) => {
         requests.set(requestId, resolve) 
