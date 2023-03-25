@@ -11,3 +11,9 @@ DEFAULT_API_KEY is NOT provided in this repo (check service_worker/public/index.
 Demo video: https://www.youtube.com/watch?v=wZ3lVvQ6_u8
 
 To-Do list: work on design; fix errors and expand existing functionality; add annotation for chinese and korean languages; add Anki integration.
+
+# How to get API key?
+1. Register at https://console.cloud.google.com/ and create a project;
+2. Enable Vision API https://cloud.google.com/vision/docs/setup and Translation API https://cloud.google.com/translate/docs/setup (you DO NOT need to setup google CLI or libraries, just enable needed APIs for created project);
+3. It is mandatory to enable billing, so pay attention to set APIs quotas on free mounthly limits - 1000 req for Vision API and 500.000 character cranslation fot Translation API after trial period to avoid unexpected expenses.
+4. Create API key in console/credentials https://cloud.google.com/docs/authentication/api-keys#console;
