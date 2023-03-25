@@ -19,3 +19,5 @@ To-Do list: work on design; fix errors and expand existing functionality; add an
 4. Create API key in project console/credentials https://cloud.google.com/docs/authentication/api-keys#console;
 5. Pass created API key in extention popup form or use it as DEFAULT_API_KEY if you build locally.
 
+# License
+The scripts and documentation in this project are released under the [MIT License](https://github.com/OuterSpaceHobo/ScanLingua/blob/main/LICENSE).
