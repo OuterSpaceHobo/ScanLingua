@@ -4,7 +4,7 @@ ScanLingua provides OCR & translation for more that 100 languages and kanji anno
 
 It is great for checking on subtitles, manga panels or any japanese text.
 
-This project is heavily inspired with Yomichan and use awesome japanese dictionary Jotoba for kanji annotation.
+This project is heavily inspired with Yomichan and use awesome japanese dictionary Jotoba API for kanji annotation (Jotoba takes data from various resources, you can check them out at https://jotoba.de/about).
 
 DEFAULT_API_KEY is NOT provided in this repo (check service_worker/public/index.js/line 76; service_worker/src/messages.ts/line 17).
 
