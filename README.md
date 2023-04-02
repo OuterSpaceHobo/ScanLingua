@@ -12,7 +12,6 @@ For text recognition and translation ScanLingua use Google Vision and Translatio
 
 This APIs are not free, but provide 1000 free vision requests and 500 000 free character translation per month which should suffice for personal use. API KEY is NOT provided. User need to create appropriate API key.
 
-
 To-Do list: work on design; fix errors and expand existing functionality; add annotation for chinese and korean languages;
 
 Feedback is highly appreciated!
@@ -38,6 +37,8 @@ Feedback is highly appreciated!
 
 5. Create API key in project console/credentials (https://cloud.google.com/docs/authentication/api-keys#console)
 <img width="871" alt="Screen Shot 2023-03-31 at 19 33 03" src="https://user-images.githubusercontent.com/116193464/229345364-e9d3c8e9-e9ed-41a9-98ff-ce2d8a90b2b7.png">
+
+5.1. Optionally you can specify the enabled APIs that key can call at key tab.
 
 6. Enter created API key in extension Home tab form.
 
