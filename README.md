@@ -39,7 +39,7 @@ Feedback is highly appreciated!
 5. Create API key in project console/credentials (https://cloud.google.com/docs/authentication/api-keys#console)
 <img width="871" alt="Screen Shot 2023-03-31 at 19 33 03" src="https://user-images.githubusercontent.com/116193464/229345364-e9d3c8e9-e9ed-41a9-98ff-ce2d8a90b2b7.png">
 
-6. Enter created API key in extention Home tab form.
+6. Enter created API key in extension Home tab form.
 
 6.1. Developer don't have access to key, it is stored locally. API availability is not guaranteed.
 
