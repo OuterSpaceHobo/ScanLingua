@@ -38,9 +38,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.17",
+    "@chakra-ui/react": "^2.5.4",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
     "@google-cloud/translate": "^7.2.0",
     "@google-cloud/vision": "^3.1.0",
     "@types/chrome": "^0.0.224",
+    "framer-motion": "^10.9.1",
     "html-to-image": "^1.11.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

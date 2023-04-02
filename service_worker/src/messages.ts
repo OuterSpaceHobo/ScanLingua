@@ -1,4 +1,5 @@
 export let userApi: string
+export let count: number
 
 const requests: Map<number, any> = new Map() // map [string] promise
 
@@ -12,10 +13,9 @@ export async function updateAPI (userApi: string) {
     return res
 }
 
-export async function setDefaultAPI () {
+export async function resetCounter () {
     const requestId = getRandomInt(100000) 
-    const userApi = `DEFAULT_API_KEY` // provide defauil api key
-    const response = await chrome.runtime.sendMessage({type: "default_API", requestId, userApi}); 
+    const response = await chrome.runtime.sendMessage({type: "reset-counter", requestId}); 
     const res = await new Promise((resolve, reject) => {
         requests.set(requestId, resolve) 
         setTimeout(reject, 10*1000) //10sec

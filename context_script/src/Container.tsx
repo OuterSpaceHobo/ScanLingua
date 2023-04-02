@@ -28,8 +28,9 @@ export const BlankColumn = styled.div`
   grid-column: 2;`;
 
 export const ButtonColumn = styled.div`
-  width: 30px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
   grid-column: 3;
   background: lightgrey;
   z-index: calc(9e999);
@@ -39,8 +40,10 @@ export const ButtonColumn = styled.div`
 
   export const ContentP = styled.p`
   font-family: Helvetica, "Noto Sans JP", sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 300;
   line-height: normal;
+  text-decoration: none;
   margin: 5px 5px 5px 5px;
+  -webkit-font-smoothing: antialiased;
   `;

@@ -2,10 +2,10 @@ import styled from 'styled-components'
 
   export const DefaultButton = styled.button`
   padding: 0;
-  width: 30px;
-  height: 30px;
-  border-radius: 0px;
-  background: none;
+  width: 35px;
+  height: 35px;
+  border-radius: 5px;
+  background: #319795;
   border: 0px;
   color: black;
   border-style: outset;
@@ -31,10 +31,10 @@ import styled from 'styled-components'
 
   export function Close() {
     return (
-      <div style={{margin: 'auto'}}>
+      <div style={{margin: 'auto', justifyContent: `center`, alignItems: `center`, display: `flex`}}>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M18 6L6 18" stroke="#222222" strokeLinecap="round" strokeLinejoin="round"/>
-        <path d="M6 6L18 18" stroke="#222222" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M18 6L6 18" stroke-width="2" stroke="#FFFFFF" strokeLinecap="round" strokeLinejoin="round"/>
+        <path d="M6 6L18 18" stroke-width="2" stroke="#FFFFFF" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       </div>
     );

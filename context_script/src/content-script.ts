@@ -114,7 +114,6 @@ export let jpAnnotation: any
     
     function mouseDownLog (event: { clientX: any; clientY: any }) {
         showOverlay()
-        showZone()
 
         x1 = event.clientX;
         y1 = event.clientY;
@@ -149,7 +148,8 @@ export let jpAnnotation: any
     }
     
     function mouseMoveLog (event: { clientX: any; clientY: any }) {
-    
+        showZone()
+
         let x2 = event.clientX;
         let y2 = event.clientY;
         

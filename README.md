@@ -10,7 +10,7 @@ DEFAULT_API_KEY is NOT provided in this repo (check service_worker/public/index.
 
 Demo video: https://www.youtube.com/watch?v=wZ3lVvQ6_u8
 
-To-Do list: work on design; fix errors and expand existing functionality; add annotation for chinese and korean languages; add Anki integration.
+To-Do list: work on design; fix errors and expand existing functionality; add annotation for chinese and korean languages;
 
 # How to get API key?
 1. Register at https://console.cloud.google.com/ and create a project;

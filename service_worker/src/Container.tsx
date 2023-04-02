@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 export const NavbarContainer = styled.div`
   display: grid;
-  width: 250px;
+  width: 400px;
   height: 30px;
   background: none;
   overflow: visible;
@@ -50,7 +50,7 @@ export const Navitem = styled.a`
 
   export const MainContainer = styled.div`
   display: grid;
-  width: 250px;
+  width: 400px;
   height: fit-content;
   grid-template-rows: auto auto auto auto auto;
   background: none;
@@ -60,9 +60,9 @@ export const Navitem = styled.a`
 
   export const FormContainer = styled.div`
   display: grid;
-  width: 250px;
+  width: 400px;
   height: fit-content;
-  grid-template-rows: auto auto auto;
+  grid-template-rows: auto auto;
   background: none;
   overflow: visible;
   position: relative;
@@ -124,7 +124,7 @@ export const ContentBox = styled.div`
 
 export const InputP = styled.p`
   font-family: Helvetica, "Noto Sans JP", sans-serif;
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 300;
   line-height: normal;
   margin: 5px 5px 5px 5px;

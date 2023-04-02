@@ -69,43 +69,42 @@ class App extends React.Component<AppProps, AppState> {
                 } else if (this.state.visionDetectResult === "No text detected.") {
                     return (
                       <div style={{ borderBottom: `1px solid #ddd` }}>
-                      <ContentP style={{fontSize: `14px`, width: `fit-content`, border: `1px solid darkviolet`, borderRadius: `10px`, padding: `2px`}}>detected text</ContentP>
-                      <ContentP style={{fontSize: `20px`}}>No text detected.</ContentP>
+                      <ContentP style={{fontSize: `14px`, width: `fit-content`, border: `1px solid teal`, borderRadius: `5px`, padding: `2px`}}>detected text</ContentP>
+                      <ContentP style={{fontSize: `17px`}}>No text detected.</ContentP>
                     </div>
                     )
                 } else if (this.state.visionDetectResult === "API key not valid. Please pass a valid API key.") {
                   return (
                     <div style={{ borderBottom: `1px solid #ddd` }}>
-                    <ContentP style={{fontSize: `14px`, width: `fit-content`, border: `1px solid darkviolet`, borderRadius: `10px`, padding: `2px`}}>error</ContentP>
-                    <ContentP style={{fontSize: `20px`}}>API key not valid. Please pass a valid API key.</ContentP>
+                    <ContentP style={{fontSize: `14px`, width: `fit-content`, border: `1px solid teal`, borderRadius: `5px`, padding: `2px`}}>error</ContentP>
+                    <ContentP style={{fontSize: `17px`}}>You need to provide a valid API key. See instruction in "Why do I need API key?" tab.</ContentP>
                   </div>
                   )
                 } else if (this.state.visionDetectResult === "Defauil API key limits exhausted.") {
                   return (
                     <div style={{ borderBottom: `1px solid #ddd` }}>
-                    <ContentP style={{fontSize: `14px`, width: `fit-content`, border: `1px solid darkviolet`, borderRadius: `10px`, padding: `2px`}}>error</ContentP>
-                    <ContentP style={{fontSize: `20px`}}>Defauil API key limits exhausted. Setup your own API key.</ContentP>
+                    <ContentP style={{fontSize: `14px`, width: `fit-content`, border: `1px solid teal`, borderRadius: `5px`, padding: `2px`}}>error</ContentP>
+                    <ContentP style={{fontSize: `17px`}}>API key limits exhausted. Please check key usage.</ContentP>
                   </div>
                   ) // no kanji
                 } else {
                     return (
                       <>
                       <div style={{ borderBottom: `1px solid #ddd` }}>
-                        <ContentP style={{fontSize: `14px`, width: `fit-content`, border: `1px solid darkviolet`, borderRadius: `10px`, padding: `2px`}}>detected text</ContentP>
-                        <ContentP style={{fontSize: `20px`}}>{(this.state.visionDetectResult)}</ContentP>
+                        <ContentP style={{fontSize: `14px`, width: `fit-content`, border: `1px solid teal`, borderRadius: `5px`, padding: `2px`}}>detected text</ContentP>
+                        <ContentP style={{fontSize: `17px`}}>{(this.state.visionDetectResult)}</ContentP>
                       </div>
                       <div style={{ whiteSpace: `pre-line`, borderBottom: `1px solid #ddd` }}>
-                        <ContentP style={{fontSize: `14px`, width: `fit-content`, border: `1px solid darkviolet`, borderRadius: `10px`, padding: `2px`}}>translation</ContentP>
-                        <ContentP style={{fontSize: `20px`}}>
+                        <ContentP style={{fontSize: `14px`, width: `fit-content`, border: `1px solid teal`, borderRadius: `5px`, padding: `2px`}}>translation</ContentP>
+                        <ContentP style={{fontSize: `17px`}}>
                         {(this.state.translationResults)}
                       </ContentP>
-                        {/* {(this.state.translationResults.choices[0].message.content)} */}
                       </div>
-                        <ContentP style={{fontSize: `14px`, width: `fit-content`, border: `1px solid darkviolet`, borderRadius: `10px`, padding: `2px`, margin: `5px`}}>kanji annotation</ContentP>
                         {(this.state.annotationResults.kanji?.map((kanji: any) => {
                           return (
                             <> 
-                            <table style={{ borderBottom: `1px solid #ddd`, width: `100%`, paddingRight: `5px`}}>
+                            <ContentP style={{fontSize: `14px`, width: `fit-content`, border: `1px solid teal`, borderRadius: `5px`, padding: `2px`, margin: `5px`}}>kanji annotation</ContentP>
+                            <table style={{ borderBottom: `1px solid #ddd`, width: `100%`, paddingRight: `5px`, WebkitFontSmoothing: `antialiased`}}>
                             <tbody>
                             <tr style={{verticalAlign: `top`, lineHeight: `normal`}}>
                               <td style={{width: `110px`}}>
@@ -140,7 +139,8 @@ class App extends React.Component<AppProps, AppState> {
       </ContentBox>
       <BlankColumn />
       <ButtonColumn>
-            <DefaultButton onClick={deInit}>
+            <DefaultButton 
+            onClick={deInit}>
               <Close />
             </DefaultButton>
       </ButtonColumn>

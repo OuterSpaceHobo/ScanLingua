@@ -36,13 +36,15 @@
     "build": "esbuild src/content-script.ts --bundle --minify --outfile=./../service_worker/public/content-script.js"
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.0.17",
+    "@chakra-ui/react": "^2.5.4",
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@google-cloud/translate": "^7.1.0",
     "@google-cloud/vision": "^3.1.0",
     "@types/chrome": "^0.0.217",
     "esbuild": "0.17.10",
-    "framer-motion": "^10.0.2",
+    "framer-motion": "^10.9.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-frame-component": "^5.2.6",

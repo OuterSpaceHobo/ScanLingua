@@ -26,6 +26,7 @@ async function startScreenshot(msg) {
 async function sendVision(requestId, vision) {
     const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
     const response = await chrome.tabs.sendMessage(tab.id, {type: "your-vision", requestId, vision});
+    incrementCount() // test
     // console.log("sendVision response", response);
 } 
 
@@ -65,15 +66,28 @@ async function gotMessage(request, sendResponse) {
         userApi = request.userApi
         // console.log("updated_API", request.userApi)
     }
-    if (request.type == "default_API") {
-        userApi = request.userApi
-        // console.log("default_API", request.userApi)
+    if (request.type == "reset-counter") {
+        apiCount = 0
+        chrome.storage.local.set({ "counter": apiCount }).then(() => {
+            console.log("counter", apiCount);
+        });
     }
     //sendResponse
 }
 
-let vision, visionText 
-let userApi = `DEFAULT_API_KEY` // provide defauil api key
+let vision, visionText, userApi
+let apiCount = 0
+
+chrome.storage.local.get(["setApi"], (result) => {
+    userApi = result.setApi
+}) // user api key
+
+async function incrementCount () {
+    apiCount++
+    chrome.storage.local.set({ "counter": apiCount }).then(() => {
+        // console.log("counter", apiCount);
+    });
+} // counter
 
 async function captureZone(x1, y1, x2, y2, pixelRatio, tabHeight, tabWidth) {
     
@@ -161,23 +175,25 @@ async function captureZone(x1, y1, x2, y2, pixelRatio, tabHeight, tabWidth) {
             })
         })
         vision = await response.json() 
-        // console.log("vision", vision);
+         console.log("vision", vision);
 
         if (vision.error?.message === "API key not valid. Please pass a valid API key.") {
             visionText =  "API key not valid. Please pass a valid API key."
         } else if (vision.error?.code === 429) {
             visionText =  "Defauil API key limits exhausted."
+        } else if (vision.responses[0].fullTextAnnotation === undefined) {
+            visionText =  "No text detected."
         } else {
             visionText = await vision.responses[0].fullTextAnnotation.text.replaceAll("\n"," ")
         }
-        // console.log("visionText", visionText);
+         console.log("visionText", visionText);
 
         return vision, visionText
 
     } catch (error) {
         console.log(error)
         
-        visionText = "No text detected."
+        visionText =  "API key not valid. Please pass a valid API key."
 
         return visionText
     }
@@ -255,5 +271,3 @@ async function AnnotateJpZone(visionText) {
 }
 
 })()
-
-

@@ -1,13 +1,14 @@
 {
     "name": "ScanLingua",
     "description": "Scan, recognize and translate parts of your screen.",
-    "version": "0.0.2",
+    "version": "0.0.1",
     "manifest_version": 3,
     "background": {
         "service_worker": "index.js"
     },
     "permissions": [
         "storage",
+        "scripting",
         "activeTab",
         "tabs"
     ],
@@ -24,11 +25,11 @@
     "commands": {
           "take-screenshot": {
             "suggested_key": {
-              "default": "Ctrl+S",
-              "mac": "MacCtrl+S",
-              "windows": "Ctrl+S",
-              "linux": "Ctrl+S",
-              "chromeos": "Ctrl+S"
+                "default": "Ctrl+S",
+                "mac": "MacCtrl+S",
+                "windows": "Ctrl+S",
+                "linux": "Ctrl+S",
+                "chromeos": "Ctrl+S"
             },
             "description": "take-screenshot"
           }      

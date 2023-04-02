@@ -11,7 +11,7 @@ export function reactResponce(x1: number, y1: number, x2: number, y2: number, tr
     
     let tabWidth = document.documentElement.clientWidth
     let tabHeight = document.documentElement.clientHeight
-
+ 
     reactFrame = document.getElementById(idReactFrame)
     if (reactFrame === null) {
         reactFrame = document.createElement("div")
@@ -19,11 +19,11 @@ export function reactResponce(x1: number, y1: number, x2: number, y2: number, tr
         zoneFrame!.appendChild(reactFrame); 
         reactFrame.style.position = `absolute`
         reactFrame.style.left = `calc(100% + 10px)`
-        reactFrame.style.width = `400px`
+        reactFrame.style.width = `405px`
         reactFrame.style.top = `-1px`
         
-        if (parseInt(rightFrame!.style.width) < 410 ) {
-            reactFrame.style.left = `-410px`
+        if (parseInt(rightFrame!.style.width) < 415 ) {
+            reactFrame.style.left = `-415px`
         }
 
         if (tabHeight - parseInt(topFrame!.style.height + zoneFrame!.style.height) < 250) {
@@ -33,7 +33,19 @@ export function reactResponce(x1: number, y1: number, x2: number, y2: number, tr
         }
 
         if (tabWidth - parseInt(leftFrame!.style.width + zoneFrame!.style.width) < 410 && tabHeight - parseInt(topFrame!.style.height + zoneFrame!.style.height) < 250) {
-            reactFrame.style.left = `-411px`
+            reactFrame.style.left = `-416px`
+        }
+
+        if (parseInt(rightFrame!.style.width) < 415 && parseInt(leftFrame!.style.width) < 415) {
+            reactFrame.style.left = `-1px`
+            reactFrame.style.bottom = `calc(+100% + 10px)`
+            reactFrame.style.top = `unset`
+        }
+
+        if ((parseInt(rightFrame!.style.width) < 415 && parseInt(leftFrame!.style.width) < 415) && parseInt(topFrame!.style.height) < 250) {
+            reactFrame.style.left = `-1px`
+            reactFrame.style.bottom = `unset`
+            reactFrame.style.top = `calc(100% + 10px)`
         }
 
         // console.log("create root called")

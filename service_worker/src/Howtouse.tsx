@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Button } from "@chakra-ui/button";
 import { Contacts } from "./Contacts";
 import { ContentBox, InputP } from "./Container";
 
@@ -7,48 +7,24 @@ export function Howtouse() {
     return (
       <>
       <InputP style={{textAlign: `center`}}>
-        For OCR and translation <span style={{color: `darkviolet`}}>ScanLingua</span> use Google Vision and Translation APIs.
+        For text recognition and translation <span style={{color: `#008080`}}>ScanLingua</span> use Google Vision and Translation APIs.
       </InputP>
       <InputP style={{textAlign: `center`}}>
-        Default API key limits: 1000 req & 500.000 ch translation per mounth for all users.
+        This APIs are not free, but provide 1000 free vision requests and 500 000 free character translation per month which should suffice for personal use.
       </InputP>
       <InputP style={{textAlign: `center`}}>
-        It's strongly recommended to set your own API key for same personal free limits:
+        You need to create appropriate API key and pay attention for APIs usage to not exceed free monthly limits:
       </InputP>
-      <ContentBox style={{justifyContent: `center`, display: `flex`}}>
-      <ul style={{padding: `5px`, margin: `0px`, textAlign: `center`, border: `1px solid darkviolet`, borderRadius: `10px`, width: `fit-content`, listStyleType: `none`}}>
-        <li>
-          <a href="https://console.cloud.google.com/" target="_blank" rel="noreferrer">
-            <InputP style={{fontSize: `12px`}}>
-              1. register & create a project
-            </InputP>
-          </a>  
-        </li>
-        <li>
-          <a href="https://cloud.google.com/vision/docs/setup" target="_blank" rel="noreferrer">
-            <InputP style={{fontSize: `12px`}}>
-              2. enable Vision & Translation APIs
-            </InputP>
-          </a>  
-        </li>
-        <li>
-          <a href="https://cloud.google.com/docs/authentication/api-keys#console" target="_blank" rel="noreferrer">
-            <InputP style={{fontSize: `12px`}}>
-            3. generate API key & set use limits 
-            </InputP>
-          </a>  
-        </li>
-        <li>
-          <NavLink to="/*">
-            <InputP style={{fontSize: `12px`}}>
-            4. enter key in welcome form
-            </InputP>
-          </NavLink>  
-        </li>
-      </ul>
-      </ContentBox>
+      <a href="https://github.com/OuterSpaceHobo/ScanLingua#how-to-get-api-key" target="_blank" rel="noreferrer">
+        <Button colorScheme='teal' variant='link'>
+          Instruction
+        </Button>
+      </a>  
       <InputP style={{textAlign: `center`}}>
-        Developer don't have access to key as it is stored locally.
+        To help you track key usage simple hotkey counter is set at Home tab.
+      </InputP>
+      <InputP style={{textAlign: `center`}}>
+        Developer don't have access to key, it is stored locally. API availability is not guaranteed.
       </InputP>
       <ContentBox style={{justifyContent: `center`, display: `flex`, marginTop: `5px`}}>
           <Contacts />
