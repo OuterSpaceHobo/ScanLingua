@@ -47,7 +47,7 @@ Feedback is highly appreciated!
 
 # Troubleshooting
 
-* If Ctrl+S hotkey don't work try to set it manually at chrome://extensions/shortcuts
+* If Ctrl+S hotkey don't work try to set it manually at chrome://extensions/shortcuts for "take-screenshot" command.
 * For other questions use links at the extension popup footer.
 
 # License
