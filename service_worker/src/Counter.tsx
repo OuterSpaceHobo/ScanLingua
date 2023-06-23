@@ -1,35 +1,34 @@
 import { Button } from "@chakra-ui/button";
-import {useState, useEffect} from "react";
-import { InputP } from "./Container";
+import {  useEffect } from "react";
+import { CenteredP } from "./Container";
 import { resetCounter } from "./messages";
 
+import { useAppSelector, useAppDispatch } from './hooks' // test
+import { resetCount, initializeCount } from "./reducers/counterReducer";
+
 export function Counter() {
-    const [counter, setCounter] = useState(0)
+    const counter = useAppSelector(state => state.counter) // test
+    const dispatch = useAppDispatch() // test
+
+    useEffect(() => {
+        dispatch(initializeCount()) 
+      }, [dispatch]) // preload counter
 
     const handleReset = (event: { preventDefault: () => void; }) => {
-        resetCounter()
-        setCounter(0)
+        const reset = async () => {
+            // console.log('reset counter called')
+            resetCounter()
+            dispatch(resetCount())
+          }
+          reset()
     }
-    useEffect(() => {
-        chrome.storage.local.get(["counter"], (result) => {
-            setCounter(result.counter);
-            // console.log("Get key is set to " + result.counter);
 
-            if (result.counter === null) {
-                setCounter(0)
-            } else if (result.counter === undefined) {
-                setCounter(0)
-            } 
-        })
-    }, []);
-
-    return <>
-        <InputP style={{textAlign: `center`}}>Simple hotkey usage counter: {counter}</InputP> 
-        <Button 
-        colorScheme='teal' 
-        variant='link'
-        onClick={handleReset}>
-          reset
-        </Button>
-    </>;
+    return (
+        <>
+            <CenteredP>Recognition usage counter: {counter}</CenteredP> 
+            <Button colorScheme='teal' variant='link' onClick={handleReset}>
+                reset
+            </Button>
+        </>
+    )
 }

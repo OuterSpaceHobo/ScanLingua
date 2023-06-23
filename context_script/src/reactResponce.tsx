@@ -1,14 +1,21 @@
 import ReactDOM from 'react-dom/client'
-import App, {RequestVisionCallback , RequestTranslationCallback, RequestJpAnnotationCallback} from './App'
-import {idApp, topFrame, zoneFrame, leftFrame, rightFrame} from "./init"
+import App from './App'
+import { idApp, topFrame, zoneFrame, leftFrame, rightFrame } from "./init"
+import store from "./store.js" 
+import { Provider } from 'react-redux'
+
+store.subscribe(() => {
+    const storeNow = store.getState()
+    // console.log('storeNow', storeNow)
+  })
 
 const idReactFrame = `${idApp}ReactFrame`
 let reactFrame: HTMLElement | null = null
 
 export { reactFrame }
 
-export function reactResponce(x1: number, y1: number, x2: number, y2: number, translation: string, jpAnnotation: any, requestVision: RequestVisionCallback, requestTranslation: RequestTranslationCallback, requestJpAnnotation: RequestJpAnnotationCallback) {
-    
+export async function reactResponce() {
+
     let tabWidth = document.documentElement.clientWidth
     let tabHeight = document.documentElement.clientHeight
  
@@ -21,6 +28,7 @@ export function reactResponce(x1: number, y1: number, x2: number, y2: number, tr
         reactFrame.style.left = `calc(100% + 10px)`
         reactFrame.style.width = `405px`
         reactFrame.style.top = `-1px`
+        reactFrame.style.zIndex = `999999`// test
         
         if (parseInt(rightFrame!.style.width) < 415 ) {
             reactFrame.style.left = `-415px`
@@ -47,13 +55,14 @@ export function reactResponce(x1: number, y1: number, x2: number, y2: number, tr
             reactFrame.style.bottom = `unset`
             reactFrame.style.top = `calc(100% + 10px)`
         }
-
         // console.log("create root called")
 
         ReactDOM.createRoot(reactFrame).render(
             // <React.StrictMode>
             <>
-                <App x1={x1} x2={x2} y1={y1} y2={y2} translation={translation} jpAnnotation={jpAnnotation} requestVision={requestVision} requestTranslation={requestTranslation} requestJpAnnotation={requestJpAnnotation}/>
+                <Provider store={store}>
+                    <App />
+                </Provider>
             </>
             // </React.StrictMode>
         )

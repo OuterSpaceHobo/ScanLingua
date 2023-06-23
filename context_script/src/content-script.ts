@@ -3,172 +3,89 @@ export{}
 import { init, showOverlay, hideOverlay, showZone, fancyCursor, autoCursor, deInit } from './init'
 import { renderOverlay } from './renderOverlay'
 import { reactResponce, deReact } from './reactResponce'
+import store from "./store.js"
+import { initializeCoords } from './reducers/coordsReducer'
+import { gotMessage } from './messages'
 
 export let translation: string
 export let jpAnnotation: any
 
-
-(async function() {    
-    
+(async function() {   
+    chrome.runtime.onMessage.addListener(gotMessage)
     // console.log("content-script.js started")
+    document.body.style.overflow = "auto"; // test flow
+})()
 
-    const requests: Map<number, any> = new Map() // map [string] promise
+export function startScreenshot() {
+    deInit() 
+    deReact() 
+    document.removeEventListener('keydown', escClear, false);   
+    document.removeEventListener('mousedown', mouseDownLog, false); 
+    init() 
+    fancyCursor() 
+    document.addEventListener('mousedown', mouseDownLog, false); 
+    document.addEventListener('mouseup', mouseUpLog, false); 
+    document.addEventListener('keydown', escClear, false);   
+}
 
-    async function requestVision (x1: number, y1: number, x2: number, y2: number) {
-        const pixelRatio = window.devicePixelRatio 
-        const requestId = getRandomInt(100000) 
-        const response = await chrome.runtime.sendMessage({type: "request-vision", requestId, x1, y1, x2, y2, pixelRatio}); 
-        const res = await new Promise((resolve, reject) => {
-            requests.set(requestId, resolve) 
-            setTimeout(reject, 10*1000) //10sec
-        })
-        return res
-    }
+let x1: any, y1: any
 
-    async function requestTranslation () {
-        const requestId = getRandomInt(100000) 
-        const response = await chrome.runtime.sendMessage({type: "request-translation", requestId}); 
-        const res = await new Promise((resolve, reject) => {
-            requests.set(requestId, resolve) 
-            setTimeout(reject, 60*1000) //60sec
-        })
-        return res
-    }
-
-    async function requestJpAnnotation () {
-        const requestId = getRandomInt(100000) 
-        const response = await chrome.runtime.sendMessage({type: "request-jpAnnotation", requestId}); 
-        const res = await new Promise((resolve, reject) => {
-            requests.set(requestId, resolve) 
-            setTimeout(reject, 10*1000) //10sec
-        })
-        return res
-    }
-
-    function getRandomInt(max: number): number {
-        return Math.floor(Math.random() * max);
-    }
+function mouseDownLog (event: { clientX: any; clientY: any }) {
+    showOverlay()
+    x1 = event.clientX;
+    y1 = event.clientY;
+    document.addEventListener('mousemove', mouseMoveLog, false);
+    document.body.style.overflow = "hidden"; 
+    document.title
+    // console.log(`mouse down: ${x1}, ${y1}`)
+}
     
-    chrome.runtime.onMessage.addListener(gotMessage);
+const pixelRatio = window.devicePixelRatio
+// console.log("pixelRatio", pixelRatio)
+const tabHeight = document.documentElement.clientHeight
+// console.log("tabHeight", tabHeight)
+const tabWidth = document.documentElement.clientWidth
+// console.log("tabWidth", tabWidth)
 
-    async function gotMessage(request: { type: string, vision: any, requestId: number, translation: string, jpAnnotation: any }) {
-        // console.log("got dat message", request);
+async function mouseUpLog (event: { clientX: any; clientY: any }) {
+    hideOverlay()
+    autoCursor()
+    let x2 = event.clientX;
+    let y2 = event.clientY;
 
-        if (request.type === "start-screenshot") {
-            startScreenshot();
-        }        
+    document.removeEventListener('mousemove', mouseMoveLog, false);
+    document.removeEventListener('mousedown', mouseDownLog, false); 
+    document.removeEventListener('mouseup', mouseUpLog, false); 
 
-        if (request.type === "your-vision") {
-            
-            const resolve = requests.get(request.requestId)
-            
-            if (resolve !== undefined) {
-                // console.log("resolve", request)
-                resolve(request.vision)
-            }
-            // console.log("delete resolve")
-            requests.delete(request.requestId)
-        }
-        if (request.type === "your-translation") {
+    const coords = {
+        x1: x1,
+        y1: y1, 
+        x2: x2, 
+        y2: y2, 
+    } 
+    store.dispatch(initializeCoords(coords)) 
 
-            // console.log("request.translation", request.translation)
+    reactResponce()
+    // console.log(`mouse up: ${x2}, ${y2}`)
+}
 
-            const resolve = requests.get(request.requestId)
+function mouseMoveLog (event: { clientX: any; clientY: any }) {
+    showZone()
+    let x2 = event.clientX;
+    let y2 = event.clientY;
+    renderOverlay(x1, y1, x2, y2)
+    // console.log(`move: ${x2}, ${y2}`)
+}
 
-            if (resolve !== undefined) {
-                // console.log("resolve", request)
-                resolve(request.translation)
-            }
-            // console.log("delete resolve")
-            requests.delete(request.requestId)
-        }
-        if (request.type === "your-jpAnnotation") {
-
-            // console.log("request.jpAnnotation", request.jpAnnotation)
-
-            const resolve = requests.get(request.requestId)
-
-            if (resolve !== undefined) {
-                // console.log("resolve", request)
-                resolve(request.jpAnnotation)
-            }
-            // console.log("delete resolve")
-            requests.delete(request.requestId)
-        }
-    }
-
-    function startScreenshot() {
-        deInit() 
+function escClear (event: { keyCode: number }) {
+    if (event.keyCode === 27) {
+        deInit()
         deReact() 
+        // console.log("cleaned")
         document.removeEventListener('keydown', escClear, false);   
         document.removeEventListener('mousedown', mouseDownLog, false); 
-
-        init() 
-        fancyCursor() 
-        document.addEventListener('mousedown', mouseDownLog, false); 
-        document.addEventListener('mouseup', mouseUpLog, false); 
-        document.addEventListener('keydown', escClear, false);   
     }
-    
-    let x1: any, y1: any
-    
-    function mouseDownLog (event: { clientX: any; clientY: any }) {
-        showOverlay()
+    return false
+}
 
-        x1 = event.clientX;
-        y1 = event.clientY;
-
-        document.addEventListener('mousemove', mouseMoveLog, false);
-        document.body.style.overflow = "hidden"; 
-        document.body.style.overflowY = "hidden"; 
-
-        // console.log(`mouse down: ${x1}, ${y1}`)
-    }
-    
-    const pixelRatio = window.devicePixelRatio
-    // console.log("pixelRatio", pixelRatio)
-    const tabHeight = document.documentElement.clientHeight
-    // console.log("tabHeight", tabHeight)
-    const tabWidth = document.documentElement.clientWidth
-    // console.log("tabWidth", tabWidth)
-
-    async function mouseUpLog (event: { clientX: any; clientY: any }) {
-        hideOverlay()
-        autoCursor()
-       
-        let x2 = event.clientX;
-        let y2 = event.clientY;
-
-        reactResponce(x1, y1, x2, y2, translation, jpAnnotation, requestVision, requestTranslation, requestJpAnnotation)
-
-        document.removeEventListener('mousemove', mouseMoveLog, false);
-        document.removeEventListener('mousedown', mouseDownLog, false); 
-        document.removeEventListener('mouseup', mouseUpLog, false); 
-        // console.log(`mouse up: ${x2}, ${y2}`)
-    }
-    
-    function mouseMoveLog (event: { clientX: any; clientY: any }) {
-        showZone()
-
-        let x2 = event.clientX;
-        let y2 = event.clientY;
-        
-        renderOverlay(x1, y1, x2, y2)
-        // console.log(`move: ${x2}, ${y2}`)
-    }
-
-    function escClear (event: { keyCode: number }) {
-        if (event.keyCode === 27) {
-            deInit()
-            deReact() 
-            // console.log("cleaned")
-            document.removeEventListener('keydown', escClear, false);   
-            document.removeEventListener('mousedown', mouseDownLog, false); 
-        }
-        return false
-    }
-
-return 
-
-})()
 

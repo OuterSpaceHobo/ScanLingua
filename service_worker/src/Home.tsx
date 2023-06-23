@@ -1,27 +1,39 @@
 import { ApiInput } from "./ApiInput";
 import { Contacts } from "./Contacts";
-import { ContentBox, FormContainer, InputP, MainContainer } from "./Container";
+import { ContentBox, CenteredP, MainContainer, NameSpan, CenteredBox } from "./Container";
 import { Counter } from "./Counter";
 
 export function Home() {
+
+  const spanStyle = {
+    width: `fit-content`, 
+    border: `1px solid teal`, 
+    borderRadius: `5px`, 
+    padding: `2px`
+  }
+
     return (
     <>
       <MainContainer>
-        <ContentBox>
-            <InputP style={{padding: `2px`, margin: `5px`, textAlign: `center`}}>Welcome to <span style={{color: `#008080`}}>ScanLingua</span>!</InputP>
-           </ContentBox>
-        <FormContainer style={{justifyContent: `center`}}>
-          <ApiInput />
-        </FormContainer>
-        <ContentBox>
-         <InputP style={{padding: `2px`, margin: `5px`, textAlign: `center`}}> & use <span style={{width: `fit-content`, border: `1px solid teal`, borderRadius: `5px`, padding: `2px`}}>Ctrl + S</span> to crop.</InputP>
+        <ContentBox style={{marginBottom: `5px`}}>
+          <CenteredP>
+            Welcome to <NameSpan>ScanLingua</NameSpan>!
+          </CenteredP>
         </ContentBox>
-        <ContentBox style={{justifyContent: `center`, display: `flex`, marginTop: `5px`}}>
+        <ApiInput />
+        <CenteredBox>
+          <CenteredP> 
+            & use <span style={spanStyle}>
+            Ctrl + Shift + S
+            </span> to crop.
+          </CenteredP>
+        </CenteredBox>
+        <CenteredBox>
           <Counter />
-        </ContentBox>
-        <ContentBox style={{justifyContent: `center`, display: `flex`, marginTop: `5px`}}>
+        </CenteredBox>
+        <CenteredBox>
           <Contacts />
-        </ContentBox>
+        </CenteredBox>
       </MainContainer>
     </>
     )

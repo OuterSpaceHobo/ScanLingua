@@ -76,6 +76,17 @@ export const ContentBox = styled.div`
   position: relative;
   `;
 
+  export const CenteredBox = styled.div`
+  width: 100%;
+  height: fit-content;
+  background: none;
+  color: black;
+  position: relative;
+  justify-content: center;
+  display: flex; 
+  margin-top: 5px;
+  `;
+
   export const MainP = styled.p`
   font-family: Helvetica, "Noto Sans JP", sans-serif;
   font-size: 12px;
@@ -131,6 +142,31 @@ export const InputP = styled.p`
   color: black;
   text-decoration: none;
   `;
+  // font-size: 17px;
+
+
+  export const CenteredP = styled.p`
+  font-family: Helvetica, "Noto Sans JP", sans-serif;
+  font-size: 17px;
+  font-weight: 300;
+  line-height: normal;
+  margin: 5px 5px 5px 5px;
+  color: black;
+  text-decoration: none;
+  text-align: center;
+  `; 
+  // font-size: 17px;
+
+
+  export const TextP = styled.p`
+  font-family: Helvetica, "Noto Sans JP", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: normal;
+  margin: 5px 5px 5px 5px;
+  color: black;
+  text-decoration: none;
+  `;
 
 export const LinkButton = styled.button`
   background: none;
@@ -157,4 +193,27 @@ export const DefaultButton = styled.button`
   cursor: pointer;
   `
 
- 
+  export const NotifP = styled.p`
+  font-family: Helvetica, "Noto Sans JP", sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: normal;
+  margin: 5px 5px 5px 5px;
+  color: black;
+  text-decoration: none;
+  animation: fadeInAnimation ease 0.3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+
+  @keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+  }
+  `
+  export const NameSpan = styled.span`
+  color: #008080;
+  `;

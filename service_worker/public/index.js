@@ -1,21 +1,18 @@
-async function getCurrentTab() {
-    let queryOptions = { active: true, lastFocusedWindow: true };
-    // `tab` will either be a `tabs.Tab` instance or `undefined`.
-    let [tab] = await chrome.tabs.query(queryOptions);
-    return tab;
-}
+import { unEscape, captureZone, getCurrentTab, readStorage } from '/service.js'
+import { AnnotateJpZone, translateZone, visionZone, audioZone, AddAnkiCard, AddKanjiCard } from '/fetch.js'
 
 (async function() { 
 
-chrome.commands.onCommand.addListener( async (command) => {
+let vision, visionText, userApi, apiCount, translation, jpAnnotation, b64, b64audio
 
+chrome.commands.onCommand.addListener( async (command) => {
     const currentTab = await getCurrentTab()
     // console.log("currentTab", currentTab)
-
     if (command === "take-screenshot") {
         startScreenshot();
+        // console.log('startScreenshot')
     }
-})
+}) // starter listener
   
 async function startScreenshot(msg) {
     const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
@@ -26,14 +23,21 @@ async function startScreenshot(msg) {
 async function sendVision(requestId, vision) {
     const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
     const response = await chrome.tabs.sendMessage(tab.id, {type: "your-vision", requestId, vision});
-    incrementCount() // test
+    incrementCount() // count only vision
     // console.log("sendVision response", response);
 } 
 
 async function sendTranslation(requestId, translation) {
     const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
     const response = await chrome.tabs.sendMessage(tab.id, {type: "your-translation", requestId, translation});
+    // incrementCount() // count with edits
     // console.log("sendTranslation response", response);
+} 
+
+async function sendAudio(requestId, b64audio) {
+    const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
+    const response = await chrome.tabs.sendMessage(tab.id, {type: "your-b64audio", requestId, b64audio});
+    // console.log("sendAudio response", response);
 } 
 
 async function sendJpAnnotation(requestId, jpAnnotation) {
@@ -42,232 +46,128 @@ async function sendJpAnnotation(requestId, jpAnnotation) {
     // console.log("sendJpAnnotation response", response);
 } 
 
-chrome.runtime.onMessage.addListener(gotMessage);
+async function sendAnkiResult(requestId, addedCard) {
+    const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
+    const response = await chrome.tabs.sendMessage(tab.id, {type: "your-sendAnkiResult", requestId, addedCard});
+    // console.log("sendAnkiResult response", response);
+} 
 
+chrome.runtime.onMessage.addListener(gotMessage);
 async function gotMessage(request, sendResponse) {
         //   console.log("ready to crop", request);
     if (request.type == "request-vision") {
-        const vision = await captureZone(request.x1, request.y1, request.x2, request.y2, request.pixelRatio, request.tabHeight, request.tabWidth);
-        // console.log("vision", vision)
-        await sendVision(request.requestId, vision)
+        b64 = await captureZone(request.x1, request.y1, request.x2, request.y2, request.pixelRatio, request.tabHeight, request.tabWidth);
+        // console.log("b64", b64)
+        const [viz, vizText] = await visionZone(b64, userApi)
+        vision = viz
+        visionText = vizText
+        // console.log("visionText", visionText, "vision", vision)
+        await sendVision(request.requestId, visionText)
+        chrome.storage.local.set({ "b64pic": b64 })
+        // chrome.storage.local.set({ "b64pic": b64 }).then(() => {
+        //     console.log("b64pic saved", b64);
+        // }); // save b64pic for anki 
+        chrome.storage.local.set({ "visionText": visionText })
+        // chrome.storage.local.set({ "visionText": visionText }).then(() => {
+        //     console.log("visionText saved", visionText);
+        // }); // save visionText for anki 
     }
-    if (request.type == "request-translation") {
-        const rawTranslation = await translateZone(visionText)
-        const translation = await unEscape(rawTranslation)
+    if (request.type == "request-translation") { 
+        // console.log("my request.editedText and request.userApi", request.editedText, request.userApi)
+        if (request.editedText !== undefined) {
+            // console.log("new edit translation req", request.editedText)
+            visionText = await request.editedText
+            userApi = await request.userApi // api preload
+        } // edit kanji
+        const rawTranslation = await translateZone(visionText, userApi)
+        translation = await unEscape(rawTranslation) 
         // console.log("translation", translation)
         await sendTranslation(request.requestId, translation)
+        chrome.storage.local.set({ "visionText": visionText })
+        // chrome.storage.local.set({ "visionText": visionText }).then(() => {
+        //     console.log("visionText saved", visionText);
+        // }); // save edited visionText for anki 
+        chrome.storage.local.set({ "translation": translation })
+        // chrome.storage.local.set({ "translation": translation }).then(() => {
+        //     console.log("translation saved", translation);
+        // }); // save end translation for anki 
+    }
+    if (request.type == "request-audio") {
+        if (translation === "Japanese text not detected.") {
+            // console.log("not ja text for audio")
+            b64audio = "no audio"
+            await sendAudio(request.requestId, b64audio)
+        } // not ja 
+        b64audio = await audioZone(visionText, userApi)
+        // console.log("b64audio", b64audio)
+        await sendAudio(request.requestId, b64audio)
+        chrome.storage.local.set({ "b64audio": b64audio })
+        // chrome.storage.local.set({ "b64audio": b64audio }).then(() => {
+        //     console.log("b64audio saved", b64audio);
+        // }); // save audio for anki 
     }
     if (request.type == "request-jpAnnotation") {
-        const jpAnnotation = await AnnotateJpZone(visionText)
+        if (translation === "Japanese text not detected.") {
+            // console.log("not ja text for annotation")
+            jpAnnotation = "no annotation"
+            await sendJpAnnotation(request.requestId, jpAnnotation)
+        } // not ja 
+        jpAnnotation = await AnnotateJpZone(visionText)
         // console.log("jpAnnotation", jpAnnotation)
         await sendJpAnnotation(request.requestId, jpAnnotation)
     }
+    if (request.type == "request-AddAnkiCard") {
+        b64 = await readStorage("b64pic") 
+        b64audio = await readStorage("b64audio")
+        visionText = await readStorage("visionText")
+        translation = await readStorage("translation")
+        // TODO test set and get jpAnnotation
+        if (request.kanjiCard !== undefined) {
+            const kanjiData = request.kanjiCard
+            const addedCard = await AddKanjiCard(visionText, b64, translation, b64audio, kanjiData) 
+            // console.log("addedCard", addedCard)
+            await sendAnkiResult(request.requestId, addedCard)
+        } else {
+            const addedCard = await AddAnkiCard(visionText, b64, translation, b64audio) 
+            // console.log("addedCard", addedCard)
+            await sendAnkiResult(request.requestId, addedCard)
+        }
+    } // add anki / kanji cards
     if (request.type == "updated_API") {
         userApi = request.userApi
         // console.log("updated_API", request.userApi)
     }
     if (request.type == "reset-counter") {
+        // console.log("reset-counter called");
         apiCount = 0
-        chrome.storage.local.set({ "counter": apiCount }).then(() => {
-            console.log("counter", apiCount);
-        });
     }
     //sendResponse
 }
 
-let vision, visionText, userApi
-let apiCount = 0
-
 chrome.storage.local.get(["setApi"], (result) => {
     userApi = result.setApi
-}) // user api key
+}) // user api key preload
+
+chrome.storage.local.get(["counter"], (result) => {
+    apiCount = result.counter
+    // console.log('onload apiCount', apiCount)
+    if (!apiCount) {
+        // console.log('!apiCount called')
+        apiCount = 0
+        chrome.storage.local.set({ "counter": apiCount })
+        // chrome.storage.local.set({ "counter": apiCount }).then(() => {
+        //     console.log("counter set to", apiCount);
+        // });
+    }
+}) // user counter set/preload
 
 async function incrementCount () {
+    // console.log("incrementCount called");
     apiCount++
-    chrome.storage.local.set({ "counter": apiCount }).then(() => {
-        // console.log("counter", apiCount);
-    });
-} // counter
-
-async function captureZone(x1, y1, x2, y2, pixelRatio, tabHeight, tabWidth) {
-    
-    if (x1 > x2) {
-        const tmp = x2
-        x2 = x1
-        x1 = tmp
-    }
-    if (y1 > y2) {
-        const tmp = y2
-        y2 = y1
-        y1 = tmp
-    }
-
-    //full screen
-
-    // console.log("taking dat screenshot");
-    let capturing = chrome.tabs.captureVisibleTab({format: "png"});
-
-    const imageUri = await capturing;
-    // console.log("imageUri", imageUri)
-
-    const blob = await (await fetch(imageUri)).blob(); 
-    // console.log("blob", blob)
-
-    const imgBitMap = await createImageBitmap(blob)
-    // console.log("imgBitMap", imgBitMap)
-        
-    // canvas
-
-    const dWidth = (x2 - x1)
-    const dHeight = (y2 - y1) 
-
-    // console.log(dWidth, dHeight)
-    const canvas = new OffscreenCanvas(dWidth, dHeight);
-    const ctx = canvas.getContext('2d');
-    // console.log("ctx", ctx)
-
-    ctx.drawImage(imgBitMap, (x1 * pixelRatio), (y1 * pixelRatio), dWidth * pixelRatio, dHeight * pixelRatio, 0, 0, dWidth, dHeight)
-
-    const imgPngBlob = await canvas.convertToBlob()
-    // console.log('imgPngBlob', imgPngBlob)
-
-    const base64data = await new Promise(resolve => {
-        const reader = new FileReader()
-        reader.readAsDataURL(imgPngBlob)
-        reader.onloadend = function () {
-            const base64data = reader.result
-            resolve(base64data)
-        }
-    }) 
-
-    // console.log("base64data", base64data)
-
-    {
-        const imgBitMap = canvas.transferToImageBitmap()
-        // console.log("imgBitMap", imgBitMap)
-    }
-
-    const base64result = base64data.split(',')[1];
-
-    // console.log("base64result", base64result)
-    
-    // fetch 
-
-    try {
-        const response = await fetch(`https://vision.googleapis.com/v1/images:annotate?key=${userApi}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-                        },
-            body: JSON.stringify({
-                    "requests":[
-                        {
-                        "image":{ 
-                            "content": base64result
-                        },
-                        "features":[
-                            {
-                            "type":"TEXT_DETECTION",
-                            }
-                        ]
-                        }
-                    ]
-            })
-        })
-        vision = await response.json() 
-         console.log("vision", vision);
-
-        if (vision.error?.message === "API key not valid. Please pass a valid API key.") {
-            visionText =  "API key not valid. Please pass a valid API key."
-        } else if (vision.error?.code === 429) {
-            visionText =  "Defauil API key limits exhausted."
-        } else if (vision.responses[0].fullTextAnnotation === undefined) {
-            visionText =  "No text detected."
-        } else {
-            visionText = await vision.responses[0].fullTextAnnotation.text.replaceAll("\n"," ")
-        }
-         console.log("visionText", visionText);
-
-        return vision, visionText
-
-    } catch (error) {
-        console.log(error)
-        
-        visionText =  "API key not valid. Please pass a valid API key."
-
-        return visionText
-    }
-} 
-
-async function translateZone(visionText) {
-
-    if (visionText === "No text detected.") {
-        const translation = ""
-        return translation
-    } 
-    else if (visionText === "API key not valid. Please pass a valid API key.") {
-        const translation = ""
-        return translation    
-    }
-
-    try {
-        const translate = await fetch(`https://translation.googleapis.com/language/translate/v2/?key=${userApi}`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json, charset=utf-8"
-                        },
-            body: JSON.stringify({
-                q: visionText,
-                target: `en` 
-            })
-        })
-        const translation = await translate.json()
-        // console.log("translation", translation);
-
-        return translation
-
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-async function unEscape(translation) {
-
-    if (translation === "") {
-        return translation
-    }
-
-    translation = translation.data.translations[0].translatedText
-    translation = translation.replace(/&lt;/g , "<");	 
-    translation = translation.replace(/&gt;/g , ">");     
-    translation = translation.replace(/&quot;/g , "\"");  
-    translation = translation.replace(/&#39;/g , "\'");   
-    translation = translation.replace(/&amp;/g , "&");
-    return translation;
-}
-
-async function AnnotateJpZone(visionText) {
-
-    try {
-    const translate = await fetch("https://jotoba.de/api/search/kanji", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-                    },
-        body: JSON.stringify({
-            "query": visionText,
-            "language": "English",
-            "no_english": false
-          })
-    })
-    const jpAnnotation = await translate.json()
-    // console.log("jpAnnotation", jpAnnotation);
-
-    return jpAnnotation
-
-    } catch (error) {
-        console.log(error)
-    }
-}
+    chrome.storage.local.set({ "counter": apiCount })
+    // chrome.storage.local.set({ "counter": apiCount }).then(() => {
+    //     console.log("counter", apiCount);
+    // });
+} // increment counter
 
 })()

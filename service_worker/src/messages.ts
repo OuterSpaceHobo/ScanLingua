@@ -3,6 +3,7 @@ export let count: number
 
 const requests: Map<number, any> = new Map() // map [string] promise
 
+
 export async function updateAPI (userApi: string) {
     const requestId = getRandomInt(100000) 
     const response = await chrome.runtime.sendMessage({type: "updated_API", requestId, userApi}); 

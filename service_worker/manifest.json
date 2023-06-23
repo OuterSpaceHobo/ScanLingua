@@ -1,14 +1,13 @@
 {
     "name": "ScanLingua",
     "description": "Scan, recognize and translate parts of your screen.",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "manifest_version": 3,
     "background": {
         "service_worker": "index.js"
     },
     "permissions": [
         "storage",
-        "scripting",
         "activeTab",
         "tabs"
     ],

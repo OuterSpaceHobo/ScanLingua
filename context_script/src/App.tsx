@@ -1,152 +1,137 @@
 import React from "react";
-import { DefaultButton, Loader, Close }  from "./Buttons";
-import { ZoneContainer, ContentBox, ButtonColumn, BlankColumn, ContentP } from "./Container";
+import { useState, useEffect } from "react";
+import { CloseButton, Loader, Close, Spinner }  from "./Buttons";
+import { ZoneContainer, ContentBox, ButtonColumn, BlankColumn, ContentP, InfoP, BottomDiv } from "./Container";
 import { deInit } from "./init";
-// import { deReact } from "./reactResponce";
+import { useAppSelector } from "./hooks"; 
+import { KanjiTiles } from "./KanjiTiles";
+import { TextInput } from "./TextInput";
+import store from "./store";
+import { initializeVision } from "./reducers/visionReducer";
+import { requestJpAnnotation, requestJpAudio, requestTranslation, requestVision } from "./messages";
+import { initializeTranslation } from "./reducers/translationReducer";
+import { initializeJpAnnotation } from "./reducers/jpAnnotationReducer";
+import { initializeAudio } from "./reducers/audioReducer";
+import { AddAnki } from "./AddAnki";
+import Notification from "./Notification";
 
-export type RequestVisionCallback = (x1: number, y1: number, x2: number, y2: number) => Promise<any>;
-export type RequestTranslationCallback = (translation: string) => Promise<any>;
-export type RequestJpAnnotationCallback = (translation: string) => Promise<any>;
+const App = () => { 
+  const reduxVision = useAppSelector((state) => state.vision) 
+  const reduxTranslation = useAppSelector((state) => state.translation) 
+  const reduxJpAnnotation = useAppSelector((state) => state.jpAnnotation) 
+  const reduxAudio = useAppSelector((state) => state.audio) 
+  const coords = useAppSelector((state) => state.coords)
+  const [loading, setLoading] = useState(true)
+  const [render, setRender] = useState(false)
 
-
-type AppProps = {
-  x1: number;
-  x2: number;
-  y1: number;
-  y2: number;
-  translation: string;
-  jpAnnotation: any;
-  requestVision: RequestVisionCallback;
-  requestTranslation: RequestTranslationCallback; 
-  requestJpAnnotation: RequestJpAnnotationCallback;
-};
-
-type AppState = {
-  loading: boolean;
-  visionDetectResult: any;
-  translationResults: any;
-  annotationResults: any;
-};
-
-class App extends React.Component<AppProps, AppState> {
-  state: AppState = {
-    loading: true,
-    visionDetectResult: null,
-    translationResults: null,
-    annotationResults: null,
-  };
-
-  componentDidMount() {
-    // console.log("componentDidMount called")
-    try {
-      this.init()
-    } catch (error) {
-      console.log(error)
-    } 
-  }
-
-  init = async () => {
-    // console.log("init request")
-    const resVision = await this.props.requestVision(this.props.x1, this.props.y1, this.props.x2, this.props.y2)
-    const resTranslation = await this.props.requestTranslation(this.props.translation) 
-    const resJpAnnotation = await this.props.requestJpAnnotation(this.props.jpAnnotation) 
-    // console.log("resVision", resVision, "resTranslation", resTranslation, "resJpAnnotation", resJpAnnotation)
-    this.setState({loading: false, visionDetectResult: resVision, translationResults: resTranslation, annotationResults: resJpAnnotation})
-  }
-  
-  render() {
-    return (
-      <ZoneContainer>
-      <ContentBox>
-        {
-          (() => {
-            if(this.state.loading) {
-                    return (
-                      <ContentP>
-                        <Loader />
-                      </ContentP>
-                    )
-                } else if (this.state.visionDetectResult === "No text detected.") {
-                    return (
-                      <div style={{ borderBottom: `1px solid #ddd` }}>
-                      <ContentP style={{fontSize: `14px`, width: `fit-content`, border: `1px solid teal`, borderRadius: `5px`, padding: `2px`}}>detected text</ContentP>
-                      <ContentP style={{fontSize: `17px`}}>No text detected.</ContentP>
-                    </div>
-                    )
-                } else if (this.state.visionDetectResult === "API key not valid. Please pass a valid API key.") {
-                  return (
-                    <div style={{ borderBottom: `1px solid #ddd` }}>
-                    <ContentP style={{fontSize: `14px`, width: `fit-content`, border: `1px solid teal`, borderRadius: `5px`, padding: `2px`}}>error</ContentP>
-                    <ContentP style={{fontSize: `17px`}}>You need to provide a valid API key. See instruction in "Why do I need API key?" tab.</ContentP>
-                  </div>
-                  )
-                } else if (this.state.visionDetectResult === "Defauil API key limits exhausted.") {
-                  return (
-                    <div style={{ borderBottom: `1px solid #ddd` }}>
-                    <ContentP style={{fontSize: `14px`, width: `fit-content`, border: `1px solid teal`, borderRadius: `5px`, padding: `2px`}}>error</ContentP>
-                    <ContentP style={{fontSize: `17px`}}>API key limits exhausted. Please check key usage.</ContentP>
-                  </div>
-                  ) // no kanji
-                } else {
-                    return (
-                      <>
-                      <div style={{ borderBottom: `1px solid #ddd` }}>
-                        <ContentP style={{fontSize: `14px`, width: `fit-content`, border: `1px solid teal`, borderRadius: `5px`, padding: `2px`}}>detected text</ContentP>
-                        <ContentP style={{fontSize: `17px`}}>{(this.state.visionDetectResult)}</ContentP>
-                      </div>
-                      <div style={{ whiteSpace: `pre-line`, borderBottom: `1px solid #ddd` }}>
-                        <ContentP style={{fontSize: `14px`, width: `fit-content`, border: `1px solid teal`, borderRadius: `5px`, padding: `2px`}}>translation</ContentP>
-                        <ContentP style={{fontSize: `17px`}}>
-                        {(this.state.translationResults)}
-                      </ContentP>
-                      </div>
-                        {(this.state.annotationResults.kanji?.map((kanji: any) => {
-                          return (
-                            <> 
-                            <ContentP style={{fontSize: `14px`, width: `fit-content`, border: `1px solid teal`, borderRadius: `5px`, padding: `2px`, margin: `5px`}}>kanji annotation</ContentP>
-                            <table style={{ borderBottom: `1px solid #ddd`, width: `100%`, paddingRight: `5px`, WebkitFontSmoothing: `antialiased`}}>
-                            <tbody>
-                            <tr style={{verticalAlign: `top`, lineHeight: `normal`}}>
-                              <td style={{width: `110px`}}>
-                                <ContentP style={{fontSize: `30px`, textAlign: `center`}}>
-                                  {(kanji.literal).replaceAll(`"`,``)}
-                                </ContentP>
-                                <ContentP style={{fontSize: `14px`, padding: `2px`, margin: `5px`, textAlign: `center`}}>frequency: {kanji.frequency}</ContentP>
-                                <ContentP style={{fontSize: `14px`, padding: `2px`, margin: `5px`, textAlign: `center`}}>grade: {kanji.grade}</ContentP>
-                                <ContentP style={{fontSize: `14px`, padding: `2px`, margin: `5px`, textAlign: `center`}}>jlpt: {kanji.jlpt}</ContentP>
-                              </td>
-                              <td style={{width: `110px`, padding: `2px`, margin: `5px`, textAlign: `center`}}>Meaning: {kanji.meanings?.map((meaning: any) => {
-                                return <ContentP style={{fontSize: `14px`, padding: `2px`, margin: `5px`, textAlign: `center`}}>{meaning}</ContentP>
-                              })}</td>
-                              <td style={{padding: `2px`, margin: `5px`, textAlign: `center`}}>On: {kanji.onyomi?.map((onyomi: any) => {
-                                return <ContentP style={{fontSize: `14px`, padding: `2px`, margin: `5px`, textAlign: `center`}}>{onyomi}</ContentP>
-                              })}</td>
-                              <td style={{padding: `2px`, margin: `5px`, textAlign: `center`}}>Kun: {kanji.kunyomi?.map((kunyomi: any) => {
-                                return <ContentP style={{fontSize: `14px`, padding: `2px`, margin: `5px`, textAlign: `center`}}>{kunyomi}</ContentP>
-                              })}</td>
-                            </tr>
-                            </tbody>
-                            </table>
-                            </>
-                            )
-                          })
-                        )}
-                      </> 
-                    )
-                }
-          })()  
+  useEffect(() => {
+    const init = async () => {
+      // console.log("init request")
+        try {
+        const resVision = await requestVision(coords.x1, coords.y1, coords.x2, coords.y2)  
+        store.dispatch(initializeVision(resVision)) 
+        const resTranslation = await requestTranslation(undefined) // optional arg if edit in TextInput
+        store.dispatch(initializeTranslation(resTranslation)) 
+        const resJpAnnotation = await requestJpAnnotation()
+        store.dispatch(initializeJpAnnotation(resJpAnnotation)) 
+        const resAudio = await requestJpAudio() 
+        store.dispatch(initializeAudio(resAudio)) 
+        setLoading(false)
+        } catch (error) {
+          console.log('error', error)
         }
-      </ContentBox>
-      <BlankColumn />
-      <ButtonColumn>
-            <DefaultButton 
-            onClick={deInit}>
-              <Close />
-            </DefaultButton>
-      </ButtonColumn>
-      </ZoneContainer>
-    );
-  }
+    }
+    init()
+  },[])
+
+  useEffect(() => {
+    if (!loading && (
+      reduxVision !== "No text detected." 
+      && reduxVision !== "Japanese text not detected." 
+      && reduxVision !== "API key not valid. Please pass a valid API key." 
+      && reduxVision !== "Defauil API key limits exhausted.") ) {
+      setRender(true)
+    }
+  },[loading])
+
+  // console.log(
+  //   "resVision", reduxVision, 
+  //   "resTranslation", reduxTranslation, 
+  //   "resJpAnnotation", reduxJpAnnotation, 
+  //   'resAudio', reduxAudio)
+
+  return (
+<>
+  <ZoneContainer>
+        <ContentBox>
+        <Notification /> 
+          {
+            (() => {
+              if(loading) {
+                      return (
+                        <div style={{padding: '5px'}}>
+                          <Spinner />
+                        </div>
+                      )
+                  } else if (reduxVision === "No text detected.") {
+                      return (
+                        <BottomDiv>
+                          <InfoP>detected text</InfoP>
+                          <ContentP>No text detected. Try to crop larger text portion.</ContentP>
+                        </BottomDiv>
+                      )
+                  } else if (reduxVision === "Japanese text not detected.") {
+                      return (
+                        <BottomDiv>
+                          <InfoP>detected text</InfoP>
+                          <ContentP>Japanese text not detected or misjudjed as Chinese. Try to crop larger text portion.</ContentP>
+                        </BottomDiv>
+                      )
+                  } else if (reduxVision === "API key not valid. Please pass a valid API key.") {
+                      return (
+                        <BottomDiv>
+                          <InfoP>error</InfoP>
+                          <ContentP>You need to provide a valid API key. See instruction in "Why API key?" tab.</ContentP>
+                        </BottomDiv>
+                      )
+                  } else if (reduxVision === "Defauil API key limits exhausted.") {
+                      return (
+                        <BottomDiv>
+                          <InfoP>error</InfoP>
+                          <ContentP>API key limits exhausted. Please check key usage.</ContentP>
+                        </BottomDiv>
+                      ) // no kanji
+                  } else {
+                      return (
+                        <>
+                          <BottomDiv>
+                            <InfoP>detected text</InfoP>
+                            <TextInput />
+                          </BottomDiv>
+                          <BottomDiv>
+                            <InfoP>translation</InfoP>
+                            <ContentP key={reduxTranslation}>
+                              {(reduxTranslation)}
+                            </ContentP>
+                          </BottomDiv>
+                          <KanjiTiles />
+                        </> 
+                      )
+                  }
+            })()  
+          }
+        </ContentBox>
+        <BlankColumn />
+        <ButtonColumn>
+              <CloseButton 
+              onClick={deInit}>
+                <Close />
+              </CloseButton>
+              {!render ?  null : <AddAnki />}
+        </ButtonColumn>
+  </ZoneContainer>
+</>
+  )
 }
 
 export default App;

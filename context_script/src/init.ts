@@ -123,5 +123,4 @@ export function deInit() {
     rightFrame?.parentNode!.removeChild(rightFrame!); rightFrame = null
     zoneFrame?.parentNode!.removeChild(zoneFrame!); zoneFrame = null
     document.body.style.overflow = "auto";
-    document.body.style.overflowY = "auto"; 
 }

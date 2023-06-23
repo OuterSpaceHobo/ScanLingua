@@ -1,23 +1,30 @@
-//@ts-nocheck
-import { InputP } from "./Container";
-import { Donate } from "./Donate";
+// @ts-nocheck
+import { BsEnvelopeFill, BsGithub, BsLinkedin, BsTelegram } from 'react-icons/Bs'
+import { TextP } from "./Container";
 
 export function Contacts() {
+
+  const iconsStyle = {
+    height: '4vw', 
+    width: '4vw', 
+    color: 'lightgray'
+  }
+
     return (
-      <>
-      <InputP style={{fontSize: '12px'}}>Made by OuterSpaceHobo</InputP>
-      <a href="https://t.me/+v7OhTnrVwxBiY2Ji" target="_blank" rel="noreferrer">
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAABeUlEQVR4nJ2Uv0oDQRDGUyiC/wXxEWLeQOysrAUN8RUsbI1Ra9FWn8BaOzubPEDW3OT7Nl64xlajFrYSoowksm42d6cDC3fszu9mv/nmCoWMsNbOAijpEpGZwn8iiqJFkicAhOSnuwBEumeMWcgFI7kL4NUHBcB6ppIKA1AD0M+COdA+gGpaZblhHrQ8olmea6ZAX35pqiLnrYbkHYB9kk/e/pGrnWSA3kletFqtVSfnwTvT/N6I43guBWRJ7qkXjTHTJDc1xxgzSfLDr17UpyJS9EA9ANckN5xq1gHciMjK4L0UKkBEiiHgZb1en9DEJEmmAJyTbHQ6nWXnA1tjgXHgygDeANySfASQAFjy/HoYapgMRzOjKc/tdnvNA14FgE3XNscZlumRPFMJBucbAWDtB6imVHPm8GJM8jQwUd0kSeb90av8d/SstTvjfg7Vv/4cSB4EYQ60nPP6XZLbqbBhqB46m9q5AOheGzCiWd7QkdMZ1qXPWQlfDsefhqJXTX4AAAAASUVORK5CYII=" />
-      </a>  
-      <a href="https://github.com/OuterSpaceHobo/ScanLingua.git" target="_blank" rel="noreferrer" style={{paddingRight: '5px', paddingLeft: '5px'}}>
-        <img alt="svgImg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjAiIGhlaWdodD0iMjAiCnZpZXdCb3g9IjAsMCwyNTYsMjU2IgpzdHlsZT0iZmlsbDojMDAwMDAwOyI+CjxnIGZpbGw9IiNkM2QzZDMiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxnIHRyYW5zZm9ybT0ic2NhbGUoNS4xMiw1LjEyKSI+PHBhdGggZD0iTTE3Ljc5MSw0Ni44MzZjMC43MTEsLTAuMzA2IDEuMjA5LC0xLjAxMyAxLjIwOSwtMS44MzZ2LTUuNGMwLC0wLjE5NyAwLjAxNiwtMC40MDIgMC4wNDEsLTAuNjFjLTAuMDE0LDAuMDA0IC0wLjAyNywwLjAwNyAtMC4wNDEsMC4wMWMwLDAgLTMsMCAtMy42LDBjLTEuNSwwIC0yLjgsLTAuNiAtMy40LC0xLjhjLTAuNywtMS4zIC0xLC0zLjUgLTIuOCwtNC43Yy0wLjMsLTAuMiAtMC4xLC0wLjUgMC41LC0wLjVjMC42LDAuMSAxLjksMC45IDIuNywyYzAuOSwxLjEgMS44LDIgMy40LDJjMi40ODcsMCAzLjgyLC0wLjEyNSA0LjYyMiwtMC41NTVjMC45MzQsLTEuMzg5IDIuMjI3LC0yLjQ0NSAzLjU3OCwtMi40NDV2LTAuMDI1Yy01LjY2OCwtMC4xODIgLTkuMjg5LC0yLjA2NiAtMTAuOTc1LC00Ljk3NWMtMy42NjUsMC4wNDIgLTYuODU2LDAuNDA1IC04LjY3NywwLjcwN2MtMC4wNTgsLTAuMzI3IC0wLjEwOCwtMC42NTYgLTAuMTUxLC0wLjk4N2MxLjc5NywtMC4yOTYgNC44NDMsLTAuNjQ3IDguMzQ1LC0wLjcxNGMtMC4xMTIsLTAuMjc2IC0wLjIwOSwtMC41NTkgLTAuMjkxLC0wLjg0OWMtMy41MTEsLTAuMTc4IC02LjU0MSwtMC4wMzkgLTguMTg3LDAuMDk3Yy0wLjAyLC0wLjMzMiAtMC4wNDcsLTAuNjYzIC0wLjA1MSwtMC45OTljMS42NDksLTAuMTM1IDQuNTk3LC0wLjI3IDguMDE4LC0wLjExMWMtMC4wNzksLTAuNSAtMC4xMywtMS4wMTEgLTAuMTMsLTEuNTQzYzAsLTEuNyAwLjYsLTMuNSAxLjcsLTVjLTAuNSwtMS43IC0xLjIsLTUuMyAwLjIsLTYuNmMyLjcsMCA0LjYsMS4zIDUuNSwyLjFjMS42OTksLTAuNzAxIDMuNTk5LC0xLjEwMSA1LjY5OSwtMS4xMDFjMi4xLDAgNCwwLjQgNS42LDEuMWMwLjksLTAuOCAyLjgsLTIuMSA1LjUsLTIuMWMxLjUsMS40IDAuNyw1IDAuMiw2LjZjMS4xLDEuNSAxLjcsMy4yIDEuNiw1YzAsMC40ODQgLTAuMDQ1LDAuOTUxIC0wLjExLDEuNDA5YzMuNDk5LC0wLjE3MiA2LjUyNywtMC4wMzQgOC4yMDQsMC4xMDJjLTAuMDAyLDAuMzM3IC0wLjAzMywwLjY2NiAtMC4wNTEsMC45OTljLTEuNjcxLC0wLjEzOCAtNC43NzUsLTAuMjggLTguMzU5LC0wLjA4OWMtMC4wODksMC4zMzYgLTAuMTk3LDAuNjYzIC0wLjMyNSwwLjk4YzMuNTQ2LDAuMDQ2IDYuNjY1LDAuMzg5IDguNTQ4LDAuNjg5Yy0wLjA0MywwLjMzMiAtMC4wOTMsMC42NjEgLTAuMTUxLDAuOTg3Yy0xLjkxMiwtMC4zMDYgLTUuMTcxLC0wLjY2NCAtOC44NzksLTAuNjgyYy0xLjY2NSwyLjg3OCAtNS4yMiw0Ljc1NSAtMTAuNzc3LDQuOTc0djAuMDMxYzIuNiwwIDUsMy45IDUsNi42djUuNGMwLDAuODIzIDAuNDk4LDEuNTMgMS4yMDksMS44MzZjOS4xNjEsLTMuMDMyIDE1Ljc5MSwtMTEuNjcyIDE1Ljc5MSwtMjEuODM2YzAsLTEyLjY4MiAtMTAuMzE3LC0yMyAtMjMsLTIzYy0xMi42ODMsMCAtMjMsMTAuMzE4IC0yMywyM2MwLDEwLjE2NCA2LjYzLDE4LjgwNCAxNS43OTEsMjEuODM2eiI+PC9wYXRoPjwvZz48L2c+Cjwvc3ZnPg=="/>
-      </a>  
-      <a href="https://www.linkedin.com/in/shabalinst/" target="_blank" rel="noreferrer" style={{paddingRight: '5px'}}>
-      <img alt="svgImg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHg9IjBweCIgeT0iMHB4Igp3aWR0aD0iMjAiIGhlaWdodD0iMjAiCnZpZXdCb3g9IjAsMCwyNTYsMjU2IgpzdHlsZT0iZmlsbDojMDAwMDAwOyI+CjxnIGZpbGw9IiNkM2QzZDMiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSJub25lIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHN0cm9rZS1kYXNoYXJyYXk9IiIgc3Ryb2tlLWRhc2hvZmZzZXQ9IjAiIGZvbnQtZmFtaWx5PSJub25lIiBmb250LXdlaWdodD0ibm9uZSIgZm9udC1zaXplPSJub25lIiB0ZXh0LWFuY2hvcj0ibm9uZSIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxnIHRyYW5zZm9ybT0ic2NhbGUoNS4xMiw1LjEyKSI+PHBhdGggZD0iTTQxLDRoLTMyYy0yLjc2LDAgLTUsMi4yNCAtNSw1djMyYzAsMi43NiAyLjI0LDUgNSw1aDMyYzIuNzYsMCA1LC0yLjI0IDUsLTV2LTMyYzAsLTIuNzYgLTIuMjQsLTUgLTUsLTV6TTE3LDIwdjE5aC02di0xOXpNMTEsMTQuNDdjMCwtMS40IDEuMiwtMi40NyAzLC0yLjQ3YzEuOCwwIDIuOTMsMS4wNyAzLDIuNDdjMCwxLjQgLTEuMTIsMi41MyAtMywyLjUzYy0xLjgsMCAtMywtMS4xMyAtMywtMi41M3pNMzksMzloLTZjMCwwIDAsLTkuMjYgMCwtMTBjMCwtMiAtMSwtNCAtMy41LC00LjA0aC0wLjA4Yy0yLjQyLDAgLTMuNDIsMi4wNiAtMy40Miw0LjA0YzAsMC45MSAwLDEwIDAsMTBoLTZ2LTE5aDZ2Mi41NmMwLDAgMS45MywtMi41NiA1LjgxLC0yLjU2YzMuOTcsMCA3LjE5LDIuNzMgNy4xOSw4LjI2eiI+PC9wYXRoPjwvZz48L2c+Cjwvc3ZnPg=="/>
-      </a>
-      <a href="mailto:shabalin.st@gmail.com" target="_blank" rel="noreferrer" style={{paddingRight: '5px'}}>
-        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA30lEQVR4nO2UMUqDQRCF50iC4gHEIKTQzlKr1LmBeIVg4S0UJB4ioMX/vlcneIAEuxCDURYSSbGJ0X+Lv8jCK3aY+XbmMWxE44+kw5IK4KuUJH2G7Q4wLwCbSrpMHfaAM+C9Bmxs+wS4X438YPtY0ts/gMPkHdBP9x8PJQ1sHwAvf+hssKx5XcUi89qRpKcdgI+5qSKTOJF0CtxtgfUktXK+x4ZRZsAV0E2rsBZfALe2r4GPXG1s8Wch6aaqqgtglGT7PAGX4Gxd7OBVX1I7CXj+LT/qLjR7YBT/vhp/vgF20iE9X42H/QAAAABJRU5ErkJggg==" />
-      </a>   
-      </>
+      <div style={{display: 'flex', alignItems: 'center'}}>
+        <TextP>Made by OuterSpaceHobo</TextP>
+        <a href="https://t.me/+v7OhTnrVwxBiY2Ji" target="_blank" rel="noreferrer" style={{paddingRight: '2vw'}}>
+          <BsTelegram  style={iconsStyle}/>
+        </a>  
+        <a href="https://github.com/OuterSpaceHobo/ScanLingua.git" target="_blank" rel="noreferrer" style={{paddingRight: '2vw'}}>
+          <BsGithub style={iconsStyle}/>
+        </a>  
+        <a href="https://www.linkedin.com/in/shabalinst/" target="_blank" rel="noreferrer" style={{paddingRight: '2vw'}}>
+          <BsLinkedin style={iconsStyle}/>
+        </a>
+        <a href="mailto:shabalin.st@gmail.com" target="_blank" rel="noreferrer">
+          <BsEnvelopeFill style={iconsStyle}/>
+        </a>
+      </div>
     )
   }
