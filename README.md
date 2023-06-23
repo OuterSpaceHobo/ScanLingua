@@ -9,7 +9,7 @@ ScanLingua provides Japanese text recognition of selected screen areas with tra
 
 This project is heavily inspired with Yomichan and use awesome japanese dictionary Jotoba API for kanji annotation (Jotoba takes data from various resources, you can check them out at https://jotoba.de/about).
 
-Demo video: [https://www.youtube.com/watch?v=wZ3lVvQ6_u8](https://youtu.be/SU9TsNvd_OA)
+Demo video: https://www.youtube.com/watch?v=BbWeflDf8-A
 
 ScanLingua use various Google APIs. Free API key creation is mandatory to use extension functions.
 
