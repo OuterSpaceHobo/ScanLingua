@@ -1,54 +1,71 @@
 # ScanLingua ![icon-32](https://user-images.githubusercontent.com/116193464/229344421-e508bdde-c1dd-428a-85f2-58578a05060c.png)
 
-ScanLingua provides OCR & translation for more that 100 languages and kanji annotation of selected screen areas.
+ScanLingua provides Japanese text recognition of selected screen areas with translation, kanji annotation and audio.
 
-It is great for checking on subtitles, manga panels or any japanese text.
+- Check on subtitles, manga panels or any Japanese text;
+- Edit recognized text and alter annotations;
+- Create and export kanji cards to Anki via Anki-connect;
+- Free and open source.
 
 This project is heavily inspired with Yomichan and use awesome japanese dictionary Jotoba API for kanji annotation (Jotoba takes data from various resources, you can check them out at https://jotoba.de/about).
 
 Demo video: [https://www.youtube.com/watch?v=wZ3lVvQ6_u8](https://youtu.be/SU9TsNvd_OA)
 
-For text recognition and translation ScanLingua use Google Vision and Translation APIs.
+ScanLingua use various Google APIs. Free API key creation is mandatory to use extension functions.
 
-This APIs are not free, but provide 1000 free vision requests and 500 000 free character translation per month which should suffice for personal use. API KEY is NOT provided. User need to create appropriate API key.
+This APIs provide free monthly limits, which should suffice for personal use (e.g. recognition API provide 1000 free requests, translation and text-to-speech provide 500 000 character).
 
-To-Do list: work on design; fix errors and expand existing functionality; add annotation for chinese and korean languages;
+To-Do list: add optional user registration with crop history & stats, fix errors and expand existing functionality;
 
 Feedback is highly appreciated!
 
 # How to get API key?
-1. Register at https://console.cloud.google.com/ and create a project, in project main menu navigate to "Enabled APIs and services".
-<img width="445" alt="Screen Shot 2023-03-31 at 19 35 21" src="https://user-images.githubusercontent.com/116193464/229344629-e2a75fb1-a750-48ab-ae5c-e9098126844d.png">
 
-2. Click "+ Enable APIs and services".
-<img width="704" alt="Screen Shot 2023-03-31 at 19 34 02" src="https://user-images.githubusercontent.com/116193464/229344751-aa353353-3859-42ce-a84b-2ab92c325339.png">
+To use the ScanLingua, you'll need to create a Google API key. Here's how:
+1. First, go to the Google Cloud Console website (https://console.cloud.google.com/).
+  
+2. If you don't already have a Google Cloud account, you'll need to create one. Click the "Get started for free" button and follow the prompts to create an account.
+   
+3. After logging into the Google Cloud Console, create a new project by clicking on the projects menu in the top navigation bar and then clicking "New Project".
+<img width="754" alt="Select a project" src="https://github.com/OuterSpaceHobo/ScanLingua/assets/116193464/71504d71-68ef-490b-ab74-90dacfa07849">
 
-3. In opened search field find and enable "Vision API" and "Translation API"
-(refer to API setup documentation: https://cloud.google.com/vision/docs/setup#api or https://cloud.google.com/translate/docs/setup#api).
+4. Give your project a name and click "Create". It may take a few moments to create the project.
+<img width="551" alt="New Project" src="https://github.com/OuterSpaceHobo/ScanLingua/assets/116193464/633d1eda-3d65-4c7d-bbbb-dbc4b4185802">
 
-3.1. You DO NOT need to setup google CLI or libraries, just enable needed APIs for created project.
+5. Once your project is created, you'll need to enable the Google Vision and Translation APIs. To do this, navigate to the "APIs & Services Dashboard" by clicking on the hamburger menu in the top left corner of the page and selecting "APIs & Services" > "Dashboard".
+<img width="708" alt="APT APIs   Services" src="https://github.com/OuterSpaceHobo/ScanLingua/assets/116193464/3e8a48cf-a6e7-4f24-8506-a62dfa5baca5">
 
-4. It is mandatory to enable billing. Navigate to "Billing" tab from project main menu and follow instructions
-(refer to API setup documentation: https://cloud.google.com/vision/docs/setup#billing or https://cloud.google.com/translate/docs/setup#billing).
+6. On the "APIs & Services Dashboard" page, click the “+ Enable APIs and services” button.
 
-4.1. Pay attention for APIs usage to not exceed free monthly limits (1000 req for Vision API and 500.000 character translation for Translation API) after trial period to avoid unexpected expenses. 
+7. In the search bar, find and select the "Google Vision API”,  "Google Translation API" and “Google text-to-speech API” and click on each of them to enable them for your project.
+<img width="648" alt="Welcome to the API Library" src="https://github.com/OuterSpaceHobo/ScanLingua/assets/116193464/12b98e37-2d3a-4d12-b95d-1872ac7477a8">
 
-4.2. To help you track key usage simple hotkey counter is set at extension Home tab.
+8. After enabling the APIs, you'll need to create an API key. To do this, go back to the "APIs & Services Dashboard" page and click the "+ Create Credentials" button, then select "API key".
+<img width="599" alt="API APIs   Services" src="https://github.com/OuterSpaceHobo/ScanLingua/assets/116193464/aab711cf-b616-43d9-85ad-16976803c0f2">
 
-5. Create API key in project console/credentials (https://cloud.google.com/docs/authentication/api-keys#console)
-<img width="871" alt="Screen Shot 2023-03-31 at 19 33 03" src="https://user-images.githubusercontent.com/116193464/229345364-e9d3c8e9-e9ed-41a9-98ff-ce2d8a90b2b7.png">
+9. Your API key will now be displayed on the screen and in credentials page.
 
-5.1. Optionally you can specify the enabled APIs that key can call at key tab.
+10. Enabling billing is mandatory for the Google APIs to work. To do this, navigate to the "Billing" section of the Google Cloud Console by clicking the "Billing" link in the left sidebar.
+<img width="287" alt="Google Cloud" src="https://github.com/OuterSpaceHobo/ScanLingua/assets/116193464/c7c59d25-7205-4731-90c6-d0266347a016">
 
-6. Enter created API key in extension Home tab form.
+11. On the "Billing" page, click the "Link a billing account" button.
+    
+12. If you don't have a billing account yet, you will need to create one. Follow the prompts to set up your billing account.
+    
+13. Once your billing account is set up, link it to your project by selecting it from the list of available billing accounts and clicking the "Set account" button.
+    
+14. Enter created API key in extension Home tab form.
 
-6.1. Developer don't have access to key, it is stored locally. API availability is not guaranteed.
+Done.
 
-7. Done.
+Enabling billing will allow you to use the Google APIs without any quota restrictions, as long as you stay within the free usage limits. You will only be charged if you exceed the free usage limits or if you use any billable features of the APIs.
+- Optionally you can specify the enabled APIs that key can call at key tab. 
+- Developer don't have access to key, it is stored locally. 
+
 
 # Troubleshooting
 
-* If Ctrl+S hotkey don't work try to set it manually at chrome://extensions/shortcuts for "take-screenshot" command.
+* If Ctrl+Shift+S hotkey don't work try to set it manually at chrome://extensions/shortcuts for "take-screenshot" command.
 * For other questions use links at the extension popup footer.
 
 # License
