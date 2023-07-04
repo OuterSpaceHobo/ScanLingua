@@ -32,7 +32,7 @@ To use the ScanLingua, you'll need to create a Google API key. Here's how:
 4. Give your project a name and click "Create". It may take a few moments to create the project.
 <img width="551" alt="New Project" src="https://github.com/OuterSpaceHobo/ScanLingua/assets/116193464/633d1eda-3d65-4c7d-bbbb-dbc4b4185802">
 
-5. Once your project is created, you'll need to enable the Google Vision and Translation APIs. To do this, navigate to the "APIs & Services Dashboard" by clicking on the hamburger menu in the top left corner of the page and selecting "APIs & Services" > "Dashboard".
+5. Once your project is created, you'll need to enable APIs. To do this, navigate to the "APIs & Services Dashboard" by clicking on the hamburger menu in the top left corner of the page and selecting "APIs & Services" > "Dashboard".
 <img width="708" alt="APT APIs   Services" src="https://github.com/OuterSpaceHobo/ScanLingua/assets/116193464/3e8a48cf-a6e7-4f24-8506-a62dfa5baca5">
 
 6. On the "APIs & Services Dashboard" page, click the “+ Enable APIs and services” button.
