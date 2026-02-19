@@ -62,11 +62,16 @@ Enabling billing will allow you to use the Google APIs without any quota restric
 - Optionally you can specify the enabled APIs that key can call at key tab. 
 - Developer don't have access to key, it is stored locally. 
 
-
 # Troubleshooting
 
 * If Ctrl+Shift+S hotkey don't work try to set it manually at chrome://extensions/shortcuts for "take-screenshot" command.
 * For other questions use links at the extension popup footer.
 
 # License
+
 The scripts and documentation in this project are released under the [MIT License](https://github.com/OuterSpaceHobo/ScanLingua/blob/main/LICENSE).
+
+# Appendix
+
+Looking for more?
+My other macOS app [ToriOCR](https://github.com/OuterSpaceHobo/tori_ocr) adds Chinese + Korean support and works system-wide (games or other apps), not limited to the browser.
