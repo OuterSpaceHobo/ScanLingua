@@ -1,0 +1,79 @@
+{
+  "name": "scan-lingua",
+  "private": true,
+  "description": "scan-lingua service_worker",
+  "version": "0.0.1",
+  "manifest_version": 3,
+  "type": "module",
+  "background": {
+    "service_worker": "index.js"
+  },
+  "permissions": [
+    "desktopCapture",
+    "downloads",
+    "tabs"
+  ],
+  "action": {
+    "default_title": "Take a Screenshot"
+  },
+  "icons": {
+    "16": "/assets/icon-16.png",
+    "32": "/assets/icon-32.png",
+    "48": "/assets/icon-48.png",
+    "100": "/assets/icon-100.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content_script.js"
+      ]
+    }
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build && npx esbuild src/ocr/offscreen-entry.ts --bundle --outfile=dist/offscreen.js --format=esm --target=esnext && npx esbuild src/ocr/bridge.ts --bundle --outfile=dist/bridge.js --format=esm --target=esnext --external:chrome && npx esbuild src/translator.ts --bundle --outfile=dist/translator.js --format=esm --target=esnext && npx esbuild src/dictionary.ts --bundle --outfile=dist/dictionary.js --format=esm --target=esnext --external:chrome",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix"
+  },
+  "dependencies": {
+    "@chakra-ui/icons": "^2.0.17",
+    "@chakra-ui/react": "^2.5.4",
+    "@emotion/react": "^11.10.6",
+    "@emotion/styled": "^11.10.6",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@types/chrome": "^0.0.224",
+    "@types/react-redux": "^7.1.25",
+    "framer-motion": "^10.9.1",
+    "html-to-image": "^1.11.11",
+    "onnxruntime-web": "^1.24.3",
+    "qrcode.react": "^4.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-frame-component": "^5.2.6",
+    "react-icons": "^4.9.0",
+    "react-redux": "^8.0.7",
+    "react-router-dom": "^6.9.0",
+    "styled-components": "^5.3.8",
+    "vite-plugin-css-injected-by-js": "^3.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/styled-components": "^5.1.26",
+    "@vitejs/plugin-react": "^4.3.0",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "onnxruntime-node": "^1.24.3",
+    "typescript": "^4.9.3",
+    "typescript-eslint": "^8.57.0",
+    "vite": "^6.0.0",
+    "vitest": "^3.0.0"
+  }
+}

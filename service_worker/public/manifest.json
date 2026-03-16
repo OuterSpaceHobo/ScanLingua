@@ -1,0 +1,51 @@
+{
+    "name": "ScanLingua",
+    "description": "Scan, recognize and translate parts of your screen.",
+    "version": "1.0.3",
+    "manifest_version": 3,
+    "background": { "service_worker": "index.js", "type": "module" },
+    "minimum_chrome_version": "92",
+    "permissions": [
+        "storage",
+        "activeTab",
+        "offscreen"
+    ],
+    "action": {
+        "default_title": "ScanLingua",
+        "default_popup": "index.html"
+    },
+    "icons": {
+        "16": "icon-16.png",
+        "32": "icon-32.png",
+        "48": "icon-48.png",
+        "100": "icon-100.png"
+    },
+    "commands": {
+        "screenshot": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+S",
+                "mac": "MacCtrl+Shift+S"
+            },
+            "description": "Take screenshot"
+        }
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content-script.js"]
+        }
+    ],
+    "web_accessible_resources": [{
+        "resources": [
+            "resources/models/*.onnx",
+            "resources/models/*.txt",
+            "lib/ort/*.wasm",
+            "lib/ort/*.mjs",
+            "resources/dictionaries/*"
+        ],
+        "matches": ["<all_urls>"]
+    }],
+    "content_security_policy": {
+        "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self'"
+    }
+}
