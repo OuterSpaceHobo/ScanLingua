@@ -1,0 +1,95 @@
+{
+  "app.tabs.home": "홈",
+  "app.tabs.ankiExport": "Anki 내보내기",
+  "app.tabs.about": "정보",
+  "app.tabs.support": "지원",
+
+  "home.welcome": "<name>ScanLingua</name>에 오신 것을 환영합니다!",
+  "home.subtitle": "설정을 선택하고 캡처를 시작하세요:",
+
+  "settings.recognize": "인식 언어:",
+  "settings.translateTo": "번역 언어:",
+  "settings.hotkeyCmd": "단축키:",
+  "settings.ankiDeck": "Anki 덱:",
+  "settings.uiLanguage": "인터페이스:",
+
+  "hotkey.notSet": "미설정",
+  "hotkey.change": "변경",
+
+  "anki.description": "ScanLingua는 Anki-connect를 통한 Anki 연동을 지원합니다.",
+  "anki.cardInfo": "일반 카드 또는 개별 문자 카드를 선택한 덱으로 원활하게 내보낼 수 있습니다. 내보낸 카드는 \"Cloze\" 유형으로 #scanlingua 태그가 설정됩니다.",
+  "anki.enableAddon": "이 기능을 사용하려면 Anki-connect 애드온을 활성화해야 합니다:",
+  "anki.instruction": "사용법",
+  "anki.limitation": "카드 내보내기는 Anki 앱이 백그라운드에서 실행 중일 때만 작동합니다. Chrome API 제한으로 인해 오디오는 내보낼 수 없습니다.",
+
+  "anki.picture": "사진:",
+  "anki.text": "텍스트:",
+  "anki.cardTranslation": "번역:",
+  "anki.example": "예문:",
+
+  "about.description": "ScanLingua는 선택한 화면 영역의 일본어, 중국어, 한국어 텍스트를 인식하고 번역, 주석, 오디오 기능을 제공합니다.",
+  "about.security": "이 확장 프로그램은 보안을 기본으로 설계되었으며, 무료 Chrome 기본 오디오 및 번역 API 외에는 외부 서비스에 의존하지 않습니다.",
+  "about.ocrEngine": "텍스트 인식은 로컬 엔진 — Baidu의 PaggleOCR(PP-OCRv5)로 구동됩니다.",
+  "about.dictionaries": "문자 주석은 'CC BY-SA 4.0' 라이선스의 로컬 영어 사전을 사용합니다: KANJIDIC2, CC-CEDICT, CC-KEDICT.",
+  "support.help": "문제가 발생하거나 제안이 있으시면 <github>GitHub</github>에서 이슈를 열거나 푸터의 링크를 통해 직접 연락해 주세요.",
+  "support.thanks": "<name>ScanLingua</name>를 이용해 주셔서 감사합니다!",
+  "support.ratePrompt": "이 확장 프로그램이 유용하셨다면 잠시 시간을 내어 평가해 주세요:",
+  "support.leaveReview": "리뷰 남기기",
+  "support.supportDev": "또는 개발을 지원해 주세요 ",
+  "support.ethLabel": "(ETH / ERC-20",
+  "support.copyAddress": "주소 복사",
+
+  "contacts.madeBy": "OuterSpaceHobo 제작:",
+
+  "overlay.noText": "텍스트가 감지되지 않았습니다.",
+  "overlay.noTextHint": "텍스트가 감지되지 않았습니다. 더 큰 텍스트 영역을 캡처해 보세요.",
+  "overlay.textNotDetected": "텍스트가 감지되지 않았습니다.",
+  "overlay.textNotDetectedHint": "텍스트가 감지되지 않았습니다. 더 큰 텍스트 영역을 캡처해 보세요.",
+  "overlay.detectedText": "감지된 텍스트",
+  "overlay.translation": "번역",
+
+  "overlay.edit": "편집",
+  "overlay.cancel": "취소",
+  "overlay.save": "저장",
+
+  "overlay.kanjiAnnotation": "한자 주석",
+  "overlay.createKanjiCard": "한자 카드 만들기",
+  "overlay.hanziAnnotation": "한자 주석",
+  "overlay.createHanziCard": "한자 카드 만들기",
+  "overlay.hanjaAnnotation": "한자 주석",
+  "overlay.createHanjaCard": "한자 카드 만들기",
+
+  "overlay.stats": "통계:",
+  "overlay.frequency": "빈도: ",
+  "overlay.grade": "등급: ",
+  "overlay.jlpt": "JLPT: ",
+  "overlay.meaning": "의미:",
+  "overlay.on": "음독:",
+  "overlay.kun": "훈독:",
+  "overlay.pinyin": "병음:",
+  "overlay.traditional": "번체:",
+  "overlay.simplified": "간체:",
+  "overlay.romaja": "로마자:",
+  "overlay.readings": "읽기:",
+  "overlay.pos": "품사:",
+
+  "overlay.createGeneralCard": "일반 정보 카드 만들기",
+  "overlay.playAudio": "{{langName}} 오디오 재생",
+
+  "tts.installVoiceMac": "{{langName}} 음성 설치: 시스템 설정 > 손쉬운 사용 > 음성 콘텐츠 > 시스템 음성 > 음성 관리",
+  "tts.installVoiceWindows": "{{langName}} 음성 설치: 설정 > 시간 및 언어 > 음성 > 음성 관리 > 음성 추가",
+  "tts.installVoiceChromeOS": "{{langName}} 음성 설치: 설정 > 접근성 > 텍스트 음성 변환 > 음성 엔진",
+  "tts.installVoiceLinux": "{{langName}} 음성 설치 (예: espeak-ng 패키지)",
+
+  "notification.ocrFailed": "OCR 실패: ",
+  "notification.translationFailed": "번역 실패: ",
+  "notification.noAnnotation": "주석 없음",
+
+  "notification.langPairNotAvailable": "언어 쌍을 사용할 수 없어 영어로 전환되었습니다",
+  "notification.cardNotAdded": "카드가 추가되지 않았습니다. \"Anki 내보내기\" 탭의 사용법을 확인하세요.",
+  "notification.cardAdded": "카드가 선택한 덱에 성공적으로 추가되었습니다.",
+  "notification.kanjiCardAdded": "한자 카드가 선택한 덱에 성공적으로 추가되었습니다.",
+  "notification.mainCardAdded": "메인 정보 카드가 선택한 덱에 성공적으로 추가되었습니다",
+  "notification.ankiNotRunning": "Anki가 실행되고 있지 않습니다. Anki를 실행한 후 다시 시도하세요.",
+  "notification.audioNotCreated": "오디오가 생성되지 않았습니다. 텍스트 음성 변환 API가 활성화되어 있는지 확인하세요."
+}

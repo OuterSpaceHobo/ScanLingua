@@ -1,0 +1,95 @@
+{
+  "app.tabs.home": "Ana Sayfa",
+  "app.tabs.ankiExport": "Anki aktar",
+  "app.tabs.about": "Hakkında",
+  "app.tabs.support": "Destek",
+
+  "home.welcome": "<name>ScanLingua</name>'a hoş geldiniz!",
+  "home.subtitle": "Ayarları seçin ve kırpmaya başlayın:",
+
+  "settings.recognize": "Tanı:",
+  "settings.translateTo": "Çeviri dili:",
+  "settings.hotkeyCmd": "Kısayol:",
+  "settings.ankiDeck": "Anki destesi:",
+  "settings.uiLanguage": "Arayüz:",
+
+  "hotkey.notSet": "Ayarlanmadı",
+  "hotkey.change": "değiştir",
+
+  "anki.description": "ScanLingua, Anki-connect aracılığıyla Anki entegrasyonunu destekler.",
+  "anki.cardInfo": "Genel veya tek karakter kartlarını seçili desteye sorunsuzca aktarın. Dışa aktarılan kartlar \"Cloze\" türünde #scanlingua etiketiyle hazırlanır.",
+  "anki.enableAddon": "Bu işlevi kullanmak için Anki-connect eklentisini etkinleştirmeniz gerekir:",
+  "anki.instruction": "Kullanım kılavuzu",
+  "anki.limitation": "Kart dışa aktarma yalnızca Anki uygulaması arka planda çalışırken işler. Chrome API kısıtlamaları nedeniyle ses dışa aktarılamaz.",
+
+  "anki.picture": "Resim:",
+  "anki.text": "Metin:",
+  "anki.cardTranslation": "Çeviri:",
+  "anki.example": "örnek:",
+
+  "about.description": "ScanLingua, seçili ekran alanlarında Japonca, Çince ve Korece metin tanıma ile çeviri, açıklama ve ses özelliği sunar.",
+  "about.security": "Uzantı tasarım gereği güvenlidir ve ses ile çeviri için ücretsiz Chrome API'leri dışında harici servislere bağımlı değildir.",
+  "about.ocrEngine": "Metin tanıma yerel motor tarafından sağlanır — Baidu'nun PaggleOCR'si (PP-OCRv5).",
+  "about.dictionaries": "Karakter açıklamaları 'CC BY-SA 4.0' lisanslı şu yerel İngilizce sözlükleri kullanır: KANJIDIC2, CC-CEDICT, CC-KEDICT.",
+  "support.help": "Herhangi bir sorunla karşılaşırsanız veya önerileriniz varsa, lütfen <github>GitHub</github>'da bir sorun bildirin veya alt bilgideki bağlantılar aracılığıyla doğrudan benimle iletişime geçin.",
+  "support.thanks": "<name>ScanLingua</name>'ı kullandığınız için teşekkürler!",
+  "support.ratePrompt": "Bu uzantıyı faydalı buluyorsanız lütfen değerlendirin:",
+  "support.leaveReview": "yorum bırakın",
+  "support.supportDev": "Veya geliştirmeyi destekleyin ",
+  "support.ethLabel": "(ETH / ERC-20",
+  "support.copyAddress": "adresi kopyala",
+
+  "contacts.madeBy": "OuterSpaceHobo tarafından yapıldı:",
+
+  "overlay.noText": "Metin algılanmadı.",
+  "overlay.noTextHint": "Metin algılanmadı. Daha büyük bir metin alanı kırpmayı deneyin.",
+  "overlay.textNotDetected": "Metin tespit edilemedi.",
+  "overlay.textNotDetectedHint": "Metin tespit edilemedi. Daha büyük bir metin alanı kırpmayı deneyin.",
+  "overlay.detectedText": "algılanan metin",
+  "overlay.translation": "çeviri",
+
+  "overlay.edit": "düzenle",
+  "overlay.cancel": "iptal",
+  "overlay.save": "kaydet",
+
+  "overlay.kanjiAnnotation": "kanji açıklaması",
+  "overlay.createKanjiCard": "kanji kartı oluştur",
+  "overlay.hanziAnnotation": "hanzi açıklaması",
+  "overlay.createHanziCard": "hanzi kartı oluştur",
+  "overlay.hanjaAnnotation": "hanja açıklaması",
+  "overlay.createHanjaCard": "hanja kartı oluştur",
+
+  "overlay.stats": "İstatistikler:",
+  "overlay.frequency": "sıklık: ",
+  "overlay.grade": "seviye: ",
+  "overlay.jlpt": "JLPT: ",
+  "overlay.meaning": "Anlam:",
+  "overlay.on": "On:",
+  "overlay.kun": "Kun:",
+  "overlay.pinyin": "Pinyin:",
+  "overlay.traditional": "Geleneksel:",
+  "overlay.simplified": "Basitleştirilmiş:",
+  "overlay.romaja": "Romaja:",
+  "overlay.readings": "Okumalar:",
+  "overlay.pos": "Sözcük türü:",
+
+  "overlay.createGeneralCard": "Genel bilgi kartı oluştur",
+  "overlay.playAudio": "{{langName}} sesini oynat",
+
+  "tts.installVoiceMac": "{{langName}} sesi yükleyin: Sistem Ayarları > Erişilebilirlik > Seslendirilen İçerik > Sistem Sesi > Sesleri Yönet",
+  "tts.installVoiceWindows": "{{langName}} sesi yükleyin: Ayarlar > Saat ve Dil > Konuşma > Sesleri Yönet > Ses Ekle",
+  "tts.installVoiceChromeOS": "{{langName}} sesi yükleyin: Ayarlar > Erişilebilirlik > Metin Okuma > Ses Motorları",
+  "tts.installVoiceLinux": "{{langName}} sesi yükleyin (ör. espeak-ng paketi)",
+
+  "notification.ocrFailed": "OCR başarısız: ",
+  "notification.translationFailed": "Çeviri başarısız: ",
+  "notification.noAnnotation": "açıklama yok",
+
+  "notification.langPairNotAvailable": "Dil çifti mevcut değil, İngilizce'ye geçildi",
+  "notification.cardNotAdded": "Kart eklenmedi. \"Anki dışa aktarma\" sekmesindeki talimatları inceleyin.",
+  "notification.cardAdded": "Kart seçili desteye başarıyla eklendi.",
+  "notification.kanjiCardAdded": "Kanji kartı seçili desteye başarıyla eklendi.",
+  "notification.mainCardAdded": "Ana bilgi kartı seçili desteye başarıyla eklendi",
+  "notification.ankiNotRunning": "Anki çalışmıyor. Anki'yi başlatın ve tekrar deneyin.",
+  "notification.audioNotCreated": "Ses oluşturulamadı. Metin okuma API'sinin etkin olup olmadığını kontrol edin."
+}

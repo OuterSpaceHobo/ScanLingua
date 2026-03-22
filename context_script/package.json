@@ -1,0 +1,68 @@
+{
+  "name": "context_ts_react_esbuild",
+  "private": true,
+  "description": "Take screenshots",
+  "version": "0.0.0",
+  "manifest_version": 3,
+  "type": "module",
+  "background": {
+    "service_worker": "index.js"
+  },
+  "permissions": [
+    "desktopCapture",
+    "downloads",
+    "tabs"
+  ],
+  "action": {
+    "default_title": "Take a Screenshot"
+  },
+  "icons": {
+    "16": "/src/icon-16.png",
+    "32": "/src/icon-32.png",
+    "48": "/src/icon-48.png",
+    "100": "/src/icon-100.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "js": [
+        "content_script.js"
+      ]
+    }
+  ],
+  "scripts": {
+    "build:css": "tailwindcss -i src/tailwind.css -o src/tailwind-built.css --minify",
+    "build:js": "esbuild src/content-script.ts --bundle --minify --loader:.css=text --outfile=./../service_worker/public/content-script.js",
+    "build": "npm run build:css && npm run build:js",
+    "test": "vitest run",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.0.0",
+    "@types/chrome": "^0.0.315",
+    "esbuild": "^0.25.0",
+    "i18next": "^25.8.18",
+    "is-port-reachable": "^4.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-frame-component": "^5.2.6",
+    "react-i18next": "^16.5.8",
+    "react-redux": "^9.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.4",
+    "@tailwindcss/cli": "^4.2.1",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.39.4",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "jsdom": "^29.0.0",
+    "tailwindcss": "^4.2.1",
+    "typescript": "^5.7.0",
+    "typescript-eslint": "^8.57.0",
+    "vitest": "^4.0.18"
+  }
+}

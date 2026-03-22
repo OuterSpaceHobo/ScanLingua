@@ -1,0 +1,95 @@
+{
+  "app.tabs.home": "Accueil",
+  "app.tabs.ankiExport": "Export Anki",
+  "app.tabs.about": "À propos",
+  "app.tabs.support": "Soutien",
+
+  "home.welcome": "Bienvenue sur <name>ScanLingua</name> !",
+  "home.subtitle": "Sélectionnez les paramètres et commencez la capture :",
+
+  "settings.recognize": "Reconnaître :",
+  "settings.translateTo": "Traduire en :",
+  "settings.hotkeyCmd": "Raccourci :",
+  "settings.ankiDeck": "Paquet Anki :",
+  "settings.uiLanguage": "Interface :",
+
+  "hotkey.notSet": "Non défini",
+  "hotkey.change": "modifier",
+
+  "anki.description": "ScanLingua prend en charge l'intégration Anki via Anki-connect.",
+  "anki.cardInfo": "Exportez facilement des cartes générales ou de caractères individuels vers le paquet sélectionné. Les cartes exportées sont prédéfinies en type « Cloze » avec le hashtag #scanlingua.",
+  "anki.enableAddon": "Pour utiliser cette fonction, vous devez activer le module Anki-connect :",
+  "anki.instruction": "Instructions",
+  "anki.limitation": "L'export de cartes ne fonctionne que lorsque l'application Anki est en arrière-plan. En raison des limitations de l'API Chrome, l'audio ne peut pas être exporté.",
+
+  "anki.picture": "Image :",
+  "anki.text": "Texte :",
+  "anki.cardTranslation": "Traduction :",
+  "anki.example": "exemple :",
+
+  "about.description": "ScanLingua fournit la reconnaissance de texte japonais, chinois et coréen dans les zones d'écran sélectionnées avec traduction, annotation et audio.",
+  "about.security": "L'extension est sécurisée par conception et ne dépend d'aucun service externe, à l'exception des API Chrome natives gratuites pour l'audio et la traduction.",
+  "about.ocrEngine": "La reconnaissance de texte est assurée par un moteur local — PaggleOCR de Baidu (PP-OCRv5).",
+  "about.dictionaries": "L'annotation des caractères utilise les dictionnaires locaux anglais suivants, sous licence « CC BY-SA 4.0 » : KANJIDIC2, CC-CEDICT, CC-KEDICT.",
+  "support.help": "Si vous rencontrez des problèmes ou avez des suggestions, veuillez ouvrir un ticket sur <github>GitHub</github> ou me contacter directement via les liens en bas de page.",
+  "support.thanks": "Merci d'utiliser <name>ScanLingua</name> !",
+  "support.ratePrompt": "Si cette extension vous est utile, prenez un moment pour la noter :",
+  "support.leaveReview": "laisser un avis",
+  "support.supportDev": "Ou soutenez le développement ",
+  "support.ethLabel": "(ETH / ERC-20",
+  "support.copyAddress": "copier l'adresse",
+
+  "contacts.madeBy": "Créé par OuterSpaceHobo :",
+
+  "overlay.noText": "Aucun texte détecté.",
+  "overlay.noTextHint": "Aucun texte détecté. Essayez de capturer une zone de texte plus grande.",
+  "overlay.textNotDetected": "Texte non détecté.",
+  "overlay.textNotDetectedHint": "Texte non détecté. Essayez de capturer une zone de texte plus grande.",
+  "overlay.detectedText": "texte détecté",
+  "overlay.translation": "traduction",
+
+  "overlay.edit": "modifier",
+  "overlay.cancel": "annuler",
+  "overlay.save": "enregistrer",
+
+  "overlay.kanjiAnnotation": "annotation kanji",
+  "overlay.createKanjiCard": "créer une carte kanji",
+  "overlay.hanziAnnotation": "annotation hanzi",
+  "overlay.createHanziCard": "créer une carte hanzi",
+  "overlay.hanjaAnnotation": "annotation hanja",
+  "overlay.createHanjaCard": "créer une carte hanja",
+
+  "overlay.stats": "Stats :",
+  "overlay.frequency": "fréquence : ",
+  "overlay.grade": "niveau : ",
+  "overlay.jlpt": "JLPT : ",
+  "overlay.meaning": "Sens :",
+  "overlay.on": "On :",
+  "overlay.kun": "Kun :",
+  "overlay.pinyin": "Pinyin :",
+  "overlay.traditional": "Traditionnel :",
+  "overlay.simplified": "Simplifié :",
+  "overlay.romaja": "Romaja :",
+  "overlay.readings": "Lectures :",
+  "overlay.pos": "POS :",
+
+  "overlay.createGeneralCard": "Créer une carte d'information générale",
+  "overlay.playAudio": "Lire l'audio {{langName}}",
+
+  "tts.installVoiceMac": "Installer une voix {{langName}} : Réglages système > Accessibilité > Contenu énoncé > Voix système > Gérer les voix",
+  "tts.installVoiceWindows": "Installer une voix {{langName}} : Paramètres > Heure et langue > Voix > Gérer les voix > Ajouter des voix",
+  "tts.installVoiceChromeOS": "Installer une voix {{langName}} : Paramètres > Accessibilité > Synthèse vocale > Moteurs vocaux",
+  "tts.installVoiceLinux": "Installer une voix {{langName}} (ex. paquet espeak-ng)",
+
+  "notification.ocrFailed": "Échec de l'OCR : ",
+  "notification.translationFailed": "Échec de la traduction : ",
+  "notification.noAnnotation": "aucune annotation",
+
+  "notification.langPairNotAvailable": "Paire de langues non disponible, basculé vers l'anglais",
+  "notification.cardNotAdded": "Carte non ajoutée. Voir les instructions dans l'onglet « Export Anki ».",
+  "notification.cardAdded": "Carte ajoutée avec succès au paquet sélectionné.",
+  "notification.kanjiCardAdded": "Carte kanji ajoutée avec succès au paquet sélectionné.",
+  "notification.mainCardAdded": "Carte d'information principale ajoutée avec succès au paquet sélectionné",
+  "notification.ankiNotRunning": "Anki n'est pas en cours d'exécution. Lancez Anki et réessayez.",
+  "notification.audioNotCreated": "Audio non créé. Vérifiez que l'API de synthèse vocale est activée."
+}

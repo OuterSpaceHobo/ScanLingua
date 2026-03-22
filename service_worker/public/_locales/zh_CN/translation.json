@@ -1,0 +1,95 @@
+{
+  "app.tabs.home": "首页",
+  "app.tabs.ankiExport": "Anki导出",
+  "app.tabs.about": "关于",
+  "app.tabs.support": "支持",
+
+  "home.welcome": "欢迎使用<name>ScanLingua</name>！",
+  "home.subtitle": "选择设置并开始截取：",
+
+  "settings.recognize": "识别语言：",
+  "settings.translateTo": "翻译为：",
+  "settings.hotkeyCmd": "快捷键：",
+  "settings.ankiDeck": "Anki牌组：",
+  "settings.uiLanguage": "界面语言：",
+
+  "hotkey.notSet": "未设置",
+  "hotkey.change": "更改",
+
+  "anki.description": "ScanLingua通过Anki-connect支持Anki集成。",
+  "anki.cardInfo": "将通用卡片或单字卡片无缝导出到所选牌组。导出的卡片预设为「Cloze」类型，带有#scanlingua标签。",
+  "anki.enableAddon": "要使用此功能，需要启用Anki-connect插件：",
+  "anki.instruction": "使用说明",
+  "anki.limitation": "卡片导出仅在Anki应用后台运行时有效。由于Chrome API限制，无法导出音频。",
+
+  "anki.picture": "图片：",
+  "anki.text": "文字：",
+  "anki.cardTranslation": "翻译：",
+  "anki.example": "例句：",
+
+  "about.description": "ScanLingua提供选定屏幕区域的日语、中文和韩语文字识别，并支持翻译、注释和音频功能。",
+  "about.security": "此扩展程序安全设计，除免费的Chrome原生音频和翻译API外，不依赖任何外部服务。",
+  "about.ocrEngine": "文字识别由本地引擎驱动 — 百度PaggleOCR（PP-OCRv5）。",
+  "about.dictionaries": "汉字注释使用以下本地英文词典，遵循「CC BY-SA 4.0」许可：KANJIDIC2、CC-CEDICT、CC-KEDICT。",
+  "support.help": "如果您遇到任何问题或有建议，请在<github>GitHub</github>上提交issue，或通过页脚的链接直接联系我。",
+  "support.thanks": "感谢使用<name>ScanLingua</name>！",
+  "support.ratePrompt": "如果觉得此扩展有用，请花一点时间评分：",
+  "support.leaveReview": "留下评价",
+  "support.supportDev": "或支持后续开发 ",
+  "support.ethLabel": "(ETH / ERC-20",
+  "support.copyAddress": "复制地址",
+
+  "contacts.madeBy": "OuterSpaceHobo 开发：",
+
+  "overlay.noText": "未检测到文字。",
+  "overlay.noTextHint": "未检测到文字。请尝试截取更大的文字区域。",
+  "overlay.textNotDetected": "未检测到文字。",
+  "overlay.textNotDetectedHint": "未检测到文字。请尝试截取更大的文字区域。",
+  "overlay.detectedText": "检测到的文字",
+  "overlay.translation": "翻译",
+
+  "overlay.edit": "编辑",
+  "overlay.cancel": "取消",
+  "overlay.save": "保存",
+
+  "overlay.kanjiAnnotation": "汉字注释",
+  "overlay.createKanjiCard": "创建汉字卡片",
+  "overlay.hanziAnnotation": "汉字注释",
+  "overlay.createHanziCard": "创建汉字卡片",
+  "overlay.hanjaAnnotation": "汉字注释",
+  "overlay.createHanjaCard": "创建汉字卡片",
+
+  "overlay.stats": "统计：",
+  "overlay.frequency": "频率：",
+  "overlay.grade": "等级：",
+  "overlay.jlpt": "JLPT：",
+  "overlay.meaning": "释义：",
+  "overlay.on": "音读：",
+  "overlay.kun": "训读：",
+  "overlay.pinyin": "拼音：",
+  "overlay.traditional": "繁体：",
+  "overlay.simplified": "简体：",
+  "overlay.romaja": "罗马字：",
+  "overlay.readings": "读音：",
+  "overlay.pos": "词性：",
+
+  "overlay.createGeneralCard": "创建通用信息卡片",
+  "overlay.playAudio": "播放{{langName}}音频",
+
+  "tts.installVoiceMac": "安装{{langName}}语音：系统设置 > 辅助功能 > 朗读内容 > 系统语音 > 管理语音",
+  "tts.installVoiceWindows": "安装{{langName}}语音：设置 > 时间和语言 > 语音 > 管理语音 > 添加语音",
+  "tts.installVoiceChromeOS": "安装{{langName}}语音：设置 > 无障碍 > 文字转语音 > 语音引擎",
+  "tts.installVoiceLinux": "安装{{langName}}语音（如espeak-ng软件包）",
+
+  "notification.ocrFailed": "OCR失败：",
+  "notification.translationFailed": "翻译失败：",
+  "notification.noAnnotation": "无注释",
+
+  "notification.langPairNotAvailable": "语言对不可用，已切换为英语",
+  "notification.cardNotAdded": "卡片未添加。请查看「Anki导出」标签页中的说明。",
+  "notification.cardAdded": "卡片已成功添加到所选牌组。",
+  "notification.kanjiCardAdded": "汉字卡片已成功添加到所选牌组。",
+  "notification.mainCardAdded": "主信息卡片已成功添加到所选牌组",
+  "notification.ankiNotRunning": "Anki未运行。请启动Anki后重试。",
+  "notification.audioNotCreated": "音频未创建。请检查文字转语音API是否已启用。"
+}

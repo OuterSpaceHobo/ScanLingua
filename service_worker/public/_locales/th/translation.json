@@ -1,0 +1,95 @@
+{
+  "app.tabs.home": "หน้าหลัก",
+  "app.tabs.ankiExport": "ส่งออก Anki",
+  "app.tabs.about": "เกี่ยวกับ",
+  "app.tabs.support": "สนับสนุน",
+
+  "home.welcome": "ยินดีต้อนรับสู่<name>ScanLingua</name>!",
+  "home.subtitle": "เลือกการตั้งค่าแล้วเริ่มจับภาพ:",
+
+  "settings.recognize": "ภาษาที่รู้จำ:",
+  "settings.translateTo": "แปลเป็น:",
+  "settings.hotkeyCmd": "ปุ่มลัด:",
+  "settings.ankiDeck": "สำรับ Anki:",
+  "settings.uiLanguage": "อินเทอร์เฟซ:",
+
+  "hotkey.notSet": "ยังไม่ตั้ง",
+  "hotkey.change": "เปลี่ยน",
+
+  "anki.description": "ScanLingua รองรับการเชื่อมต่อ Anki ผ่าน Anki-connect",
+  "anki.cardInfo": "ส่งออกการ์ดทั่วไปหรือการ์ดอักขระเดี่ยวไปยังสำรับที่เลือกอย่างราบรื่น การ์ดที่ส่งออกตั้งค่าเป็นประเภท \"Cloze\" พร้อมแฮชแท็ก #scanlingua",
+  "anki.enableAddon": "ในการใช้ฟังก์ชันนี้ คุณต้องเปิดใช้งานส่วนเสริม Anki-connect:",
+  "anki.instruction": "คำแนะนำ",
+  "anki.limitation": "การส่งออกการ์ดใช้งานได้เฉพาะเมื่อแอป Anki ทำงานอยู่เบื้องหลัง เนื่องจากข้อจำกัดของ Chrome API จึงไม่สามารถส่งออกเสียงได้",
+
+  "anki.picture": "รูปภาพ:",
+  "anki.text": "ข้อความ:",
+  "anki.cardTranslation": "คำแปล:",
+  "anki.example": "ตัวอย่าง:",
+
+  "about.description": "ScanLingua ให้บริการรู้จำตัวอักษรภาษาญี่ปุ่น จีน และเกาหลีจากพื้นที่หน้าจอที่เลือก พร้อมการแปล คำอธิบายประกอบ และเสียง",
+  "about.security": "ส่วนขยายนี้ออกแบบมาอย่างปลอดภัย ไม่พึ่งพาบริการภายนอก ยกเว้น API ของ Chrome สำหรับเสียงและการแปลที่ใช้ฟรี",
+  "about.ocrEngine": "การรู้จำตัวอักษรขับเคลื่อนโดยเครื่องมือภายในเครื่อง — PaggleOCR ของ Baidu (PP-OCRv5)",
+  "about.dictionaries": "คำอธิบายประกอบอักขระใช้พจนานุกรมภาษาอังกฤษภายในเครื่องต่อไปนี้ ภายใต้สัญญาอนุญาต 'CC BY-SA 4.0': KANJIDIC2, CC-CEDICT, CC-KEDICT",
+  "support.help": "หากคุณพบปัญหาหรือมีข้อเสนอแนะ กรุณาเปิด issue บน <github>GitHub</github> หรือติดต่อฉันโดยตรงผ่านลิงก์ในส่วนท้าย",
+  "support.thanks": "ขอบคุณที่ใช้<name>ScanLingua</name>!",
+  "support.ratePrompt": "หากส่วนขยายนี้มีประโยชน์ กรุณาสละเวลาให้คะแนน:",
+  "support.leaveReview": "เขียนรีวิว",
+  "support.supportDev": "หรือสนับสนุนการพัฒนาต่อ ",
+  "support.ethLabel": "(ETH / ERC-20",
+  "support.copyAddress": "คัดลอกที่อยู่",
+
+  "contacts.madeBy": "สร้างโดย OuterSpaceHobo:",
+
+  "overlay.noText": "ไม่พบข้อความ",
+  "overlay.noTextHint": "ไม่พบข้อความ ลองจับภาพพื้นที่ข้อความที่ใหญ่ขึ้น",
+  "overlay.textNotDetected": "ตรวจไม่พบข้อความ",
+  "overlay.textNotDetectedHint": "ตรวจไม่พบข้อความ ลองจับภาพพื้นที่ข้อความที่ใหญ่ขึ้น",
+  "overlay.detectedText": "ข้อความที่ตรวจพบ",
+  "overlay.translation": "คำแปล",
+
+  "overlay.edit": "แก้ไข",
+  "overlay.cancel": "ยกเลิก",
+  "overlay.save": "บันทึก",
+
+  "overlay.kanjiAnnotation": "คำอธิบายคันจิ",
+  "overlay.createKanjiCard": "สร้างการ์ดคันจิ",
+  "overlay.hanziAnnotation": "คำอธิบายอักษรจีน",
+  "overlay.createHanziCard": "สร้างการ์ดอักษรจีน",
+  "overlay.hanjaAnnotation": "คำอธิบายฮันจา",
+  "overlay.createHanjaCard": "สร้างการ์ดฮันจา",
+
+  "overlay.stats": "สถิติ:",
+  "overlay.frequency": "ความถี่: ",
+  "overlay.grade": "ระดับ: ",
+  "overlay.jlpt": "JLPT: ",
+  "overlay.meaning": "ความหมาย:",
+  "overlay.on": "อง:",
+  "overlay.kun": "คุง:",
+  "overlay.pinyin": "พินอิน:",
+  "overlay.traditional": "ตัวเต็ม:",
+  "overlay.simplified": "ตัวย่อ:",
+  "overlay.romaja": "โรมาจา:",
+  "overlay.readings": "การอ่าน:",
+  "overlay.pos": "ชนิดคำ:",
+
+  "overlay.createGeneralCard": "สร้างการ์ดข้อมูลทั่วไป",
+  "overlay.playAudio": "เล่นเสียง{{langName}}",
+
+  "tts.installVoiceMac": "ติดตั้งเสียง{{langName}}: การตั้งค่าระบบ > การช่วยการเข้าถึง > เนื้อหาที่พูด > เสียงระบบ > จัดการเสียง",
+  "tts.installVoiceWindows": "ติดตั้งเสียง{{langName}}: การตั้งค่า > เวลาและภาษา > เสียงพูด > จัดการเสียง > เพิ่มเสียง",
+  "tts.installVoiceChromeOS": "ติดตั้งเสียง{{langName}}: การตั้งค่า > การช่วยการเข้าถึง > การอ่านออกเสียง > เครื่องมือเสียง",
+  "tts.installVoiceLinux": "ติดตั้งเสียง{{langName}} (เช่น แพ็คเกจ espeak-ng)",
+
+  "notification.ocrFailed": "OCR ล้มเหลว: ",
+  "notification.translationFailed": "การแปลล้มเหลว: ",
+  "notification.noAnnotation": "ไม่มีคำอธิบาย",
+
+  "notification.langPairNotAvailable": "คู่ภาษาไม่พร้อมใช้งาน เปลี่ยนเป็นภาษาอังกฤษแล้ว",
+  "notification.cardNotAdded": "ไม่ได้เพิ่มการ์ด ดูคำแนะนำในแท็บ \"ส่งออก Anki\"",
+  "notification.cardAdded": "เพิ่มการ์ดลงในสำรับที่เลือกเรียบร้อยแล้ว",
+  "notification.kanjiCardAdded": "เพิ่มการ์ดคันจิลงในสำรับที่เลือกเรียบร้อยแล้ว",
+  "notification.mainCardAdded": "เพิ่มการ์ดข้อมูลหลักลงในสำรับที่เลือกเรียบร้อยแล้ว",
+  "notification.ankiNotRunning": "Anki ไม่ได้ทำงานอยู่ เปิด Anki แล้วลองอีกครั้ง",
+  "notification.audioNotCreated": "ไม่สามารถสร้างเสียงได้ ตรวจสอบว่า API แปลงข้อความเป็นเสียงเปิดใช้งานแล้วหรือไม่"
+}

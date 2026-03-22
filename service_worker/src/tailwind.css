@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #319795;
+  --color-on-primary: #FFFFFF;
+  --color-surface: #f5f5f5;
+  --color-border: #e0e0e0;
+  --color-border-focus: darkgrey;
+  --color-border-input: lightgrey;
+  --color-error: tomato;
+  --color-text-muted: rgba(0, 0, 0, 0.75);
+  --color-link-hover: #2C7A7B;
+
+  --font-family-sans: system-ui, -apple-system, "Segoe UI", "Noto Sans JP", sans-serif;
+
+  --shadow-soft: 0px 3px 7px 1px rgba(0, 0, 0, 0.07), 0px -3px 7px 1px rgba(0, 0, 0, 0.07);
+  --shadow-card: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+  --animate-fade-in: fade-in 0.3s ease forwards;
+
+  @keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+}
+
+@layer base {
+  body {
+    font-family: var(--font-family-sans);
+    font-weight: 300;
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .os-non-mac {
+    font-weight: 400;
+  }
+}

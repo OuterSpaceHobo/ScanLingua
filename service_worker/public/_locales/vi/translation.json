@@ -1,0 +1,95 @@
+{
+  "app.tabs.home": "Trang chủ",
+  "app.tabs.ankiExport": "Xuất Anki",
+  "app.tabs.about": "Giới thiệu",
+  "app.tabs.support": "Hỗ trợ",
+
+  "home.welcome": "Chào mừng đến với <name>ScanLingua</name>!",
+  "home.subtitle": "Chọn cài đặt và bắt đầu chụp:",
+
+  "settings.recognize": "Nhận dạng:",
+  "settings.translateTo": "Dịch sang:",
+  "settings.hotkeyCmd": "Phím tắt:",
+  "settings.ankiDeck": "Bộ thẻ Anki:",
+  "settings.uiLanguage": "Giao diện:",
+
+  "hotkey.notSet": "Chưa đặt",
+  "hotkey.change": "thay đổi",
+
+  "anki.description": "ScanLingua hỗ trợ tích hợp Anki thông qua Anki-connect.",
+  "anki.cardInfo": "Xuất liền mạch thẻ chung hoặc thẻ ký tự đơn sang bộ thẻ đã chọn. Thẻ xuất được đặt sẵn kiểu \"Cloze\" với hashtag #scanlingua.",
+  "anki.enableAddon": "Để sử dụng chức năng này, bạn cần bật tiện ích Anki-connect:",
+  "anki.instruction": "Hướng dẫn",
+  "anki.limitation": "Xuất thẻ chỉ hoạt động khi ứng dụng Anki đang chạy nền. Do giới hạn API Chrome, không thể xuất âm thanh.",
+
+  "anki.picture": "Hình ảnh:",
+  "anki.text": "Văn bản:",
+  "anki.cardTranslation": "Bản dịch:",
+  "anki.example": "ví dụ:",
+
+  "about.description": "ScanLingua cung cấp nhận dạng văn bản tiếng Nhật, tiếng Trung và tiếng Hàn trên vùng màn hình đã chọn với bản dịch, chú thích và âm thanh.",
+  "about.security": "Tiện ích mở rộng được thiết kế an toàn và không phụ thuộc vào dịch vụ bên ngoài ngoại trừ các API Chrome miễn phí cho âm thanh và dịch thuật.",
+  "about.ocrEngine": "Nhận dạng văn bản được cung cấp bởi công cụ cục bộ — PaggleOCR của Baidu (PP-OCRv5).",
+  "about.dictionaries": "Chú thích ký tự sử dụng các từ điển tiếng Anh cục bộ sau, theo giấy phép 'CC BY-SA 4.0': KANJIDIC2, CC-CEDICT, CC-KEDICT.",
+  "support.help": "Nếu bạn gặp vấn đề hoặc có đề xuất, vui lòng mở issue trên <github>GitHub</github> hoặc liên hệ trực tiếp với tôi qua các liên kết ở chân trang.",
+  "support.thanks": "Cảm ơn bạn đã sử dụng <name>ScanLingua</name>!",
+  "support.ratePrompt": "Nếu tiện ích mở rộng này hữu ích, hãy dành chút thời gian đánh giá:",
+  "support.leaveReview": "để lại đánh giá",
+  "support.supportDev": "Hoặc hỗ trợ phát triển tiếp ",
+  "support.ethLabel": "(ETH / ERC-20",
+  "support.copyAddress": "sao chép địa chỉ",
+
+  "contacts.madeBy": "Được tạo bởi OuterSpaceHobo:",
+
+  "overlay.noText": "Không phát hiện văn bản.",
+  "overlay.noTextHint": "Không phát hiện văn bản. Hãy thử chụp phần văn bản lớn hơn.",
+  "overlay.textNotDetected": "Không nhận dạng được văn bản.",
+  "overlay.textNotDetectedHint": "Không nhận dạng được văn bản. Hãy thử chụp phần văn bản lớn hơn.",
+  "overlay.detectedText": "văn bản phát hiện",
+  "overlay.translation": "bản dịch",
+
+  "overlay.edit": "chỉnh sửa",
+  "overlay.cancel": "hủy",
+  "overlay.save": "lưu",
+
+  "overlay.kanjiAnnotation": "chú thích kanji",
+  "overlay.createKanjiCard": "tạo thẻ kanji",
+  "overlay.hanziAnnotation": "chú thích hán tự",
+  "overlay.createHanziCard": "tạo thẻ hán tự",
+  "overlay.hanjaAnnotation": "chú thích hanja",
+  "overlay.createHanjaCard": "tạo thẻ hanja",
+
+  "overlay.stats": "Thống kê:",
+  "overlay.frequency": "tần suất: ",
+  "overlay.grade": "cấp độ: ",
+  "overlay.jlpt": "JLPT: ",
+  "overlay.meaning": "Nghĩa:",
+  "overlay.on": "Âm On:",
+  "overlay.kun": "Âm Kun:",
+  "overlay.pinyin": "Bính âm:",
+  "overlay.traditional": "Phồn thể:",
+  "overlay.simplified": "Giản thể:",
+  "overlay.romaja": "Romaja:",
+  "overlay.readings": "Cách đọc:",
+  "overlay.pos": "Từ loại:",
+
+  "overlay.createGeneralCard": "Tạo thẻ thông tin chung",
+  "overlay.playAudio": "Phát âm thanh {{langName}}",
+
+  "tts.installVoiceMac": "Cài đặt giọng {{langName}}: Cài đặt hệ thống > Trợ năng > Nội dung đọc > Giọng hệ thống > Quản lý giọng",
+  "tts.installVoiceWindows": "Cài đặt giọng {{langName}}: Cài đặt > Thời gian & Ngôn ngữ > Giọng nói > Quản lý giọng > Thêm giọng",
+  "tts.installVoiceChromeOS": "Cài đặt giọng {{langName}}: Cài đặt > Hỗ trợ tiếp cận > Chuyển văn bản thành giọng nói > Công cụ giọng nói",
+  "tts.installVoiceLinux": "Cài đặt giọng {{langName}} (ví dụ: gói espeak-ng)",
+
+  "notification.ocrFailed": "OCR thất bại: ",
+  "notification.translationFailed": "Dịch thất bại: ",
+  "notification.noAnnotation": "không có chú thích",
+
+  "notification.langPairNotAvailable": "Cặp ngôn ngữ không khả dụng, đã chuyển sang tiếng Anh",
+  "notification.cardNotAdded": "Thẻ chưa được thêm. Xem hướng dẫn trong tab \"Xuất Anki\".",
+  "notification.cardAdded": "Thẻ đã được thêm thành công vào bộ thẻ đã chọn.",
+  "notification.kanjiCardAdded": "Thẻ kanji đã được thêm thành công vào bộ thẻ đã chọn.",
+  "notification.mainCardAdded": "Thẻ thông tin chính đã được thêm thành công vào bộ thẻ đã chọn",
+  "notification.ankiNotRunning": "Anki chưa chạy. Hãy mở Anki và thử lại.",
+  "notification.audioNotCreated": "Âm thanh chưa được tạo. Kiểm tra xem API chuyển văn bản thành giọng nói đã được bật chưa."
+}

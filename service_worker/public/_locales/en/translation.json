@@ -1,0 +1,96 @@
+{
+  "app.tabs.home": "Home",
+  "app.tabs.ankiExport": "Anki export",
+  "app.tabs.about": "About",
+  "app.tabs.support": "Support",
+
+  "home.welcome": "Welcome to <name>ScanLingua</name>!",
+  "home.subtitle": "Select desired settings and start cropping:",
+
+  "settings.recognize": "Recognize:",
+  "settings.translateTo": "Translate to:",
+  "settings.hotkeyCmd": "Hotkey cmd:",
+  "settings.ankiDeck": "Anki deck:",
+  "settings.uiLanguage": "Interface:",
+
+  "hotkey.notSet": "Not set",
+  "hotkey.change": "change",
+
+  "anki.description": "ScanLingua support Anki integration via Anki-connect.",
+  "anki.cardInfo": "Seamlessly export general or single character cards to selected deck. Exported cards are preset in \"Cloze\" type with #scanlingua hashtag.",
+  "anki.enableAddon": "To use this function you need to enable Anki-connect add-on:",
+  "anki.instruction": "Instruction",
+  "anki.limitation": "Card export works only with Anki app running on background, due to chrome API limitations, audio cannot be exported.",
+
+  "anki.picture": "Picture:",
+  "anki.text": "Text:",
+  "anki.cardTranslation": "Translation:",
+  "anki.example": "example:",
+
+  "about.description": "ScanLingua provides Japanese, Chinese and Korean text recognition of selected screen areas with translation, annotation and audio.",
+  "about.security": "Extension is secure by design and don't rely on any external services exept for free native chrome APIs for audio and translation.",
+  "about.ocrEngine": "Text recognition is powered by local engine - Baidu's PaggleOCR (PP-OCRv5).", 
+  "about.dictionaries": "Characters annotation uses the following local english dictionaries, licensed under 'CC BY-SA 4.0': KANJIDIC2, CC-CEDICT, CC-KEDICT.",
+
+  "support.help": "If you encounter any issues or have suggestions, please open an issue on <github>GitHub</github> or contact me directly via links in the footer.",
+  "support.thanks": "Thank you for using <name>ScanLingua</name>!",
+  "support.ratePrompt": "If you find this extension helpful, please take a moment and rate it:",
+  "support.leaveReview": "leave a review.",
+  "support.supportDev": "Or consider supporting further development ",
+  "support.ethLabel": "(ETH / ERC-20",
+  "support.copyAddress": "copy address",
+
+  "contacts.madeBy": "Made by OuterSpaceHobo:",
+
+  "overlay.noText": "No text detected.",
+  "overlay.noTextHint": "No text detected. Try to crop larger text portion.",
+  "overlay.textNotDetected": "Text not detected.",
+  "overlay.textNotDetectedHint": "Text not detected. Try to crop a larger text portion.",
+  "overlay.detectedText": "detected text",
+  "overlay.translation": "translation",
+
+  "overlay.edit": "edit",
+  "overlay.cancel": "cancel",
+  "overlay.save": "save",
+
+  "overlay.kanjiAnnotation": "kanji annotation",
+  "overlay.createKanjiCard": "create kanji card",
+  "overlay.hanziAnnotation": "hanzi annotation",
+  "overlay.createHanziCard": "create hanzi card",
+  "overlay.hanjaAnnotation": "hanja annotation",
+  "overlay.createHanjaCard": "create hanja card",
+
+  "overlay.stats": "Stats:",
+  "overlay.frequency": "frequency: ",
+  "overlay.grade": "grade: ",
+  "overlay.jlpt": "jlpt: ",
+  "overlay.meaning": "Meaning:",
+  "overlay.on": "On:",
+  "overlay.kun": "Kun:",
+  "overlay.pinyin": "Pinyin:",
+  "overlay.traditional": "Traditional:",
+  "overlay.simplified": "Simplified:",
+  "overlay.romaja": "Romaja:",
+  "overlay.readings": "Readings:",
+  "overlay.pos": "POS:",
+
+  "overlay.createGeneralCard": "Create general info card.", 
+  "overlay.playAudio": "Play {{langName}} audio",
+
+  "tts.installVoiceMac": "Install a {{langName}} voice: System Settings > Accessibility > Spoken Content > System Voice > Manage Voices",
+  "tts.installVoiceWindows": "Install a {{langName}} voice: Settings > Time & Language > Speech > Manage voices > Add voices",
+  "tts.installVoiceChromeOS": "Install a {{langName}} voice: Settings > Accessibility > Text-to-Speech > Speech Engines",
+  "tts.installVoiceLinux": "Install a {{langName}} voice (e.g. espeak-ng package)",
+
+  "notification.ocrFailed": "OCR failed: ",
+  "notification.translationFailed": "Translation failed: ",
+  "notification.noAnnotation": "no annotation",
+
+  "notification.langPairNotAvailable": "Language pair not available, switched to English",
+  "notification.cardNotAdded": "Card not Added. See instruction in \"Anki export\" tab.",
+  "notification.cardAdded": "Card succesfully added to selected deck.",
+  "notification.kanjiCardAdded": "Kanji card succesfully added to selected deck.",
+  "notification.mainCardAdded": "Main info card succesfully added to selected deck",
+  "notification.ankiNotRunning": "Anki is not running. Launch Anki and try again.",
+  "notification.audioNotCreated": "Audio not created. Check if text-to-speech API is ehabled."
+}

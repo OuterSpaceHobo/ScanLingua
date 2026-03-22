@@ -1,0 +1,95 @@
+{
+  "app.tabs.home": "ホーム",
+  "app.tabs.ankiExport": "Ankiエクスポート",
+  "app.tabs.about": "概要",
+  "app.tabs.support": "サポート",
+
+  "home.welcome": "<name>ScanLingua</name>へようこそ！",
+  "home.subtitle": "設定を選択してキャプチャを開始：",
+
+  "settings.recognize": "認識言語：",
+  "settings.translateTo": "翻訳先：",
+  "settings.hotkeyCmd": "ホットキー：",
+  "settings.ankiDeck": "Ankiデッキ：",
+  "settings.uiLanguage": "表示言語：",
+
+  "hotkey.notSet": "未設定",
+  "hotkey.change": "変更",
+
+  "anki.description": "ScanLinguaはAnki-connectを通じたAnki連携に対応しています。",
+  "anki.cardInfo": "一般カードまたは個別文字カードを選択デッキにシームレスにエクスポートできます。エクスポートされたカードは「Cloze」タイプで#scanlinguaタグが付きます。",
+  "anki.enableAddon": "この機能を使用するにはAnki-connectアドオンを有効にしてください：",
+  "anki.instruction": "使い方",
+  "anki.limitation": "カードのエクスポートはAnkiアプリがバックグラウンドで実行中の場合のみ動作します。Chrome APIの制限により音声はエクスポートできません。",
+
+  "anki.picture": "画像：",
+  "anki.text": "テキスト：",
+  "anki.cardTranslation": "翻訳：",
+  "anki.example": "例文：",
+
+  "about.description": "ScanLinguaは選択した画面領域の日本語・中国語・韓国語テキストを認識し、翻訳・注釈・音声機能を提供します。",
+  "about.security": "この拡張機能はセキュアな設計で、音声と翻訳用の無料Chrome APIを除き外部サービスに依存しません。",
+  "about.ocrEngine": "テキスト認識はローカルエンジン — BaiduのPaggleOCR（PP-OCRv5）で動作します。",
+  "about.dictionaries": "文字の注釈には「CC BY-SA 4.0」ライセンスのローカル英語辞書を使用：KANJIDIC2、CC-CEDICT、CC-KEDICT。",
+  "support.help": "問題が発生した場合や提案がある場合は、<github>GitHub</github>でissueを作成するか、フッターのリンクから直接ご連絡ください。",
+  "support.thanks": "<name>ScanLingua</name>をご利用いただきありがとうございます！",
+  "support.ratePrompt": "この拡張機能が役に立ったら、ぜひ評価をお願いします：",
+  "support.leaveReview": "レビューを書く",
+  "support.supportDev": "または開発を支援する ",
+  "support.ethLabel": "(ETH / ERC-20",
+  "support.copyAddress": "アドレスをコピー",
+
+  "contacts.madeBy": "OuterSpaceHobo 制作：",
+
+  "overlay.noText": "テキストが検出されませんでした。",
+  "overlay.noTextHint": "テキストが検出されませんでした。より大きなテキスト領域を選択してください。",
+  "overlay.textNotDetected": "テキストが検出されませんでした。",
+  "overlay.textNotDetectedHint": "テキストが検出されませんでした。より大きなテキスト領域を選択してください。",
+  "overlay.detectedText": "検出テキスト",
+  "overlay.translation": "翻訳",
+
+  "overlay.edit": "編集",
+  "overlay.cancel": "キャンセル",
+  "overlay.save": "保存",
+
+  "overlay.kanjiAnnotation": "漢字の注釈",
+  "overlay.createKanjiCard": "漢字カードを作成",
+  "overlay.hanziAnnotation": "漢字の注釈",
+  "overlay.createHanziCard": "漢字カードを作成",
+  "overlay.hanjaAnnotation": "漢字の注釈",
+  "overlay.createHanjaCard": "漢字カードを作成",
+
+  "overlay.stats": "統計：",
+  "overlay.frequency": "頻度：",
+  "overlay.grade": "学年：",
+  "overlay.jlpt": "JLPT：",
+  "overlay.meaning": "意味：",
+  "overlay.on": "音読み：",
+  "overlay.kun": "訓読み：",
+  "overlay.pinyin": "ピンイン：",
+  "overlay.traditional": "繁体字：",
+  "overlay.simplified": "簡体字：",
+  "overlay.romaja": "ローマ字：",
+  "overlay.readings": "読み方：",
+  "overlay.pos": "品詞：",
+
+  "overlay.createGeneralCard": "一般情報カードを作成",
+  "overlay.playAudio": "{{langName}}の音声を再生",
+
+  "tts.installVoiceMac": "{{langName}}の音声をインストール：システム設定 > アクセシビリティ > 読み上げコンテンツ > システムの声 > 声を管理",
+  "tts.installVoiceWindows": "{{langName}}の音声をインストール：設定 > 時刻と言語 > 音声認識 > 音声を管理 > 音声を追加",
+  "tts.installVoiceChromeOS": "{{langName}}の音声をインストール：設定 > ユーザー補助 > テキスト読み上げ > 音声エンジン",
+  "tts.installVoiceLinux": "{{langName}}の音声をインストール（例：espeak-ngパッケージ）",
+
+  "notification.ocrFailed": "OCR失敗：",
+  "notification.translationFailed": "翻訳失敗：",
+  "notification.noAnnotation": "注釈なし",
+
+  "notification.langPairNotAvailable": "言語ペアが利用できないため、英語に切り替えました",
+  "notification.cardNotAdded": "カードが追加されませんでした。「Ankiエクスポート」タブの使い方を確認してください。",
+  "notification.cardAdded": "カードが選択デッキに追加されました。",
+  "notification.kanjiCardAdded": "漢字カードが選択デッキに追加されました。",
+  "notification.mainCardAdded": "メインカードが選択デッキに追加されました",
+  "notification.ankiNotRunning": "Ankiが起動していません。Ankiを起動して再試行してください。",
+  "notification.audioNotCreated": "音声が作成されませんでした。テキスト読み上げAPIが有効か確認してください。"
+}
