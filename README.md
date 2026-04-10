@@ -25,6 +25,7 @@ Feedback is highly appreciated!
 
 * If screenshot hotkey don't work try to set it manually at chrome://extensions/shortcuts for "take-screenshot" command;
 * If you just enabled extension you need to reload the page in order to take screenhots from it (enabling extension do not auto inject needed scripts to already loaded pages);
+* Extension may not work on some pages, that block script injection;
 * For other questions use links at the extension popup footer.
 
 # License
